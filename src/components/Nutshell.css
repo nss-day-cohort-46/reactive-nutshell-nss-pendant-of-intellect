@@ -3,6 +3,7 @@ strong {
 }
 
 .button {
+  margin: 5px;
   border: 1px solid black;
   border-radius: 4px;
 }
@@ -13,4 +14,8 @@ strong {
 
 .btn--delete {
   background-color: tomato;
+}
+
+.btn--create {
+  background-color: yellowgreen;
 }
