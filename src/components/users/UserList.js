@@ -6,6 +6,7 @@
 
 import React, { useContext, useEffect, useState } from "react"
 import { UsersContext } from "./UsersProvider"
+import { UserCard } from "./UserCard"
 // import "./User.css"
 
 export const UserList = () => {
@@ -28,8 +29,7 @@ export const UserList = () => {
     return (
         <>
             <h1>All Users (exluding currentUser):</h1>
-            {console.log(sessionStorage.nutshell_user)}
-            {filteredUsers.map(user => <div key={user.id}>{user.name}</div>)}
+            {filteredUsers.map(user => <UserCard key={user.id} user={user}/>)}
         </>
     )
 }
