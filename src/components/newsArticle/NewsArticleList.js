@@ -18,7 +18,7 @@ export const NewsArticleList = () => {
     return (
         <article className="article">
             <h1>Articles</h1>
-            <button className="btn--addArticle" onClick={history.push("/NewsArticleForm")}>Add Article</button>
+            <button className="btn--addArticle" onClick={() => {history.push("/NewsArticleForm")}}>New Article</button>
         </article>
     )
 }
