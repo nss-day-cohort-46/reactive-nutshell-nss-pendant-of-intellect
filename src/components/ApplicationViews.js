@@ -2,6 +2,8 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { FriendsProvider } from "./friends/FriendsProvider"
 import { FriendList } from "./friends/FriendList"
+import { UsersProvider } from "./users/UsersProvider"
+import { UserList } from "./users/UserList"
 
 export const ApplicationViews = () => {
   return (
@@ -11,11 +13,14 @@ export const ApplicationViews = () => {
         {/* Render the component for news articles */}
       </Route>
 
-      <FriendsProvider>
-        <Route path="/friends">
-          <FriendList />
-        </Route>
-      </FriendsProvider>
+      <UsersProvider>
+        <FriendsProvider>
+          <Route path="/friends">
+            <UserList />
+            <FriendList />
+          </Route>
+        </FriendsProvider>
+      </UsersProvider>
 
       <Route path="/messages">
         {/* Render the component for the messages */}

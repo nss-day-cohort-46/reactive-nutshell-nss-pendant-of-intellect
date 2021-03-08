@@ -6,7 +6,7 @@
 
 import React, { useContext, useEffect, useState } from "react"
 import { FriendsContext } from "./FriendsProvider"
-// import { FriendCard } from "./Friend"
+import { FriendCard } from "./FriendCard"
 // import "./Friend.css"
 
 export const FriendList = () => {
@@ -18,9 +18,9 @@ export const FriendList = () => {
 
     return (
         <>
-            <h1>It DOES work</h1>
+            <h1>Friends: </h1>
             {console.log(sessionStorage.nutshell_user)}
-            {filteredFriends.map(friend => <div>{friend.user.name}</div>)}
+            {filteredFriends.map(friend => <FriendCard key={friend.id} friend={friend}/>)}
         </>
     )
 }
