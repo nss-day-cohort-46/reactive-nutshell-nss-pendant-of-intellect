@@ -16,9 +16,8 @@ export const MessageCard = ({ message, currentUser }) => {
     }
     return (
         <article className="message message--card">
-            <div className="message_text">{message.text}</div>
+            <div className="message_text">(user {message.userId}) {message.text}</div>
             <div className="message__info">
-                <p className="message__info--userName">User ID: {message.userId}</p>
                 <p className="message__info--timestamp">{new Date(message.timestamp).toLocaleString('en-US')}</p>
             </div>
             {userButtons}

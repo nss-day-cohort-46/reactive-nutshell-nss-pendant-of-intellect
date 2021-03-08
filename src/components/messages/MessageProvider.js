@@ -1,3 +1,7 @@
+// Created by Alex Martin
+
+// This data provider handles the state variable of "messages" as well as provides all regular CRUD methods via the MessageContext
+
 import React, { createContext, useState } from 'react'
 
 export const MessageContext = createContext()
