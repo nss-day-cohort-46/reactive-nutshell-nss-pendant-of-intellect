@@ -1,5 +1,9 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { FriendsProvider } from "./friends/FriendsProvider"
+import { FriendList } from "./friends/FriendList"
+import { UsersProvider } from "./users/UsersProvider"
+import { UserList } from "./users/UserList"
 import { MessageList } from "./messages/MessageList"
 import { MessageProvider } from "./messages/MessageProvider"
 import { NewsArticleForm } from "./newsArticle/NewsArticleForm"
@@ -10,6 +14,22 @@ export const ApplicationViews = () => {
   return (
     <>
 
+      <Route exact path="/">
+        {/* Render the component for news articles */}
+      </Route>
+
+      <UsersProvider>
+        <FriendsProvider>
+          <Route path="/friends">
+            <UserList />
+            <FriendList />
+          </Route>
+        </FriendsProvider>
+      </UsersProvider>
+
+      <Route path="/messages">
+        {/* Render the component for the messages */}
+      </Route>
       <NewsArticleProvider>
         <Route exact path="/">
           <NewsArticleList />
