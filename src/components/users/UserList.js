@@ -9,18 +9,27 @@ import { UsersContext } from "./UsersProvider"
 // import "./User.css"
 
 export const UserList = () => {
+    const [filteredUsers, setFilteredUsers] = useState([])
+
     const { users, getUsers } = useContext(UsersContext)
 
     useEffect(() => {
         getUsers()
     }, [])
 
+    useEffect(() => {
+        setFilteredUsers(filterUsers())
+    }, [users])
+
+    const filterUsers = () => {
+        return users.filter(user => user.id !== parseInt(sessionStorage.nutshell_user))
+    }
     
     return (
         <>
-            <h1>All Users:</h1>
+            <h1>All Users (exluding currentUser):</h1>
             {console.log(sessionStorage.nutshell_user)}
-            {users.map(user => <div key={user.id}>{user.name}</div>)}
+            {filteredUsers.map(user => <div key={user.id}>{user.name}</div>)}
         </>
     )
 }
