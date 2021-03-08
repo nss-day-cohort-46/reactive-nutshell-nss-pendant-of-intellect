@@ -18,7 +18,7 @@ export const ApplicationViews = () => {
         {/* Render the component for the messages */}
       </Route> 
       <TaskProvider>
-        <Route path="/tasks">
+        <Route exact path="/tasks">
           {/* Render the component for the user's tasks */}
             <TaskList />
         </Route>
