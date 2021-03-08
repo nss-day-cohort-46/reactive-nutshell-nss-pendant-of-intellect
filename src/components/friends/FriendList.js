@@ -10,17 +10,28 @@ import { FriendCard } from "./FriendCard"
 // import "./Friend.css"
 
 export const FriendList = () => {
-    const { filteredFriends, getFriends } = useContext(FriendsContext)
+
+    // Manages state of friends of the current user
+    const [filteredFriends, setFilteredFriends] = useState([])
+
+    const { friends, getFriends } = useContext(FriendsContext)
 
     useEffect(() => {
         getFriends()
     }, [])
 
+    useEffect(() => {
+        setFilteredFriends(filterFriends())
+    }, [friends])
+
+    const filterFriends = () => {
+        return friends.filter(friend => friend.currentUserId === parseInt(sessionStorage.nutshell_user))
+    }
+
     return (
         <>
-            <h1>Friends: </h1>
-            {console.log(sessionStorage.nutshell_user)}
-            {filteredFriends.map(friend => <FriendCard key={friend.id} friend={friend}/>)}
+            <h1>My Friends: </h1>
+            {filteredFriends.map(friend => <FriendCard key={friend.id} friend={friend} />)}
         </>
     )
 }

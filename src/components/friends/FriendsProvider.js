@@ -3,32 +3,24 @@
  *  PURPOSE: This module provides FRIENDS data to the app.
  **/
 
-import React, {useState, createContext, useEffect } from "react"
+import React, { useState, createContext } from "react"
 
 export const FriendsContext = createContext()
 
 export const FriendsProvider = (props) => {
 
-    const [allFriends, setAllFriends] = useState([])
-    const [filteredFriends, setFilteredFriends] = useState([])
+    // Manages the state of all Friends realtionships from the database
+    const [friends, setFriends] = useState([])
 
     const getFriends = () => {
         return fetch("http://localhost:8088/friends?_expand=user")
-        .then(res => res.json())
-        .then(setAllFriends)
-    }
-
-    useEffect(() => {
-        setFilteredFriends(filterFriends())
-    }, [allFriends])
-
-    const filterFriends = () => {
-        return allFriends.filter(friend => friend.currentUserId === parseInt(sessionStorage.nutshell_user))
+            .then(res => res.json())
+            .then(setFriends)
     }
 
     return (
         <FriendsContext.Provider value={{
-            filteredFriends, getFriends
+            friends, getFriends
         }}>
             {props.children}
         </FriendsContext.Provider>
