@@ -5,7 +5,15 @@
 import React from 'react'
 import './MessageCard.css'
 
-export const MessageCard = ({ message }) => {
+export const MessageCard = ({ message, currentUser }) => {
+    let userButtons
+    if (currentUser) {
+        userButtons =
+            <div className="message__buttons">
+                <button className="button btn--edit">Edit</button>
+                <button className="button btn--delete">Delete</button>
+            </div>
+    }
     return (
         <article className="message message--card">
             <div className="message_text">{message.text}</div>
@@ -13,10 +21,7 @@ export const MessageCard = ({ message }) => {
                 <p className="message__info--userName">User ID: {message.userId}</p>
                 <p className="message__info--timestamp">{new Date(message.timestamp).toLocaleString('en-US')}</p>
             </div>
-            <div className="message__buttons">
-                <button className="button btn--edit">Edit</button>
-                <button className="button btn--delete">Delete</button>
-            </div>
+            {userButtons}
         </article>
     )
 
