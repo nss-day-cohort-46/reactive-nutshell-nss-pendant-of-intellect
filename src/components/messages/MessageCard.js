@@ -2,16 +2,25 @@
 
 //This module is responsible for rendering date from individual message objects to the DOM, and will only be called from MessageList.js
 
-import React from 'react'
+import React, { useContext } from 'react'
 import './MessageCard.css'
+import { MessageContext } from './MessageProvider'
 
 export const MessageCard = ({ message, currentUser }) => {
+    const { deleteMessage } = useContext(MessageContext)
     let userButtons
+
+    const handleDelete = () => {
+        deleteMessage(message.id)
+    }
+
     if (currentUser) {
         userButtons =
             <div className="message__buttons">
                 <button className="button btn--edit">Edit</button>
-                <button className="button btn--delete">Delete</button>
+                <button className="button btn--delete"
+                    onClick={handleDelete}
+                >Delete</button>
             </div>
     }
     return (
