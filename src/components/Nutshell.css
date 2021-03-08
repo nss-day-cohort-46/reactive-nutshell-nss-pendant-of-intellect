@@ -1,3 +1,17 @@
 strong {
   font-weight: bold;
 }
+
+.button {
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: black;
+}
+
+.btn--edit {
+  background-color: yellow;
+}
+
+.btn--delete {
+  background-color: tomato;
+}
