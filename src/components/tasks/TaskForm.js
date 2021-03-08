@@ -21,7 +21,7 @@ export const TaskForm = () => {
     }
 
     const saveTask = () => {
-       if (task.name || task.completedByDate === "") {
+       if (task.name && task.completedByDate === "") {
         window.alert("Please fill in all inputs")
        }
        else{
