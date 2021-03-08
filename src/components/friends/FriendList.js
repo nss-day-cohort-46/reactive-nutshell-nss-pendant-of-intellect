@@ -10,8 +10,17 @@ import { FriendsContext } from "./FriendsProvider"
 // import "./Friend.css"
 
 export const FriendList = () => {
+    const { filteredFriends, getFriends } = useContext(FriendsContext)
 
-  return  (
-        <h1>It DOES work</h1>
+    useEffect(() => {
+        getFriends()
+    }, [])
+
+    return (
+        <>
+            <h1>It DOES work</h1>
+            {console.log(sessionStorage.nutshell_user)}
+            {filteredFriends.map(friend => <div>{friend.user.name}</div>)}
+        </>
     )
 }
