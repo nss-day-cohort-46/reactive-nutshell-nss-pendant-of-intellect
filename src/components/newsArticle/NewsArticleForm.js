@@ -8,15 +8,20 @@ export const NewsArticleForm = () => {
     })
 
     const handleChangeInput = event => {
-
+        const newArticle = {...article}
+        // debugger
+        newArticle[event.target.id] = event.target.value
+        setArticle(newArticle)
     }
+
+    const handleSaveClick = () => {}
     return (
 
         <form>
             <h1>New Article</h1>
             <fieldset>
             <label htmlFor="article--title">Article Title</label>
-            <input name="article--title" id="title" value={article.title} onChange={handleChangeInput}></input>
+            <input name="article--title" id="title" value={article.title} onChange={event => handleChangeInput(event)}></input>
             </fieldset>
 
             <fieldset>
@@ -29,7 +34,10 @@ export const NewsArticleForm = () => {
             <input name="article--url" id="url" value={article.url} onChange={handleChangeInput}></input>
             </fieldset>
 
-            <button className="btn--saveArticle">Add Article</button>
+            <button className="btn--saveArticle" onClick={event => 
+            event.preventDefault()
+            
+            }>Add Article</button>
 
         </form>
     )
