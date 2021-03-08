@@ -1,0 +1,25 @@
+.message--card {
+    margin: 1%;
+    background-color: aqua;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 1%;
+}
+
+.message__info {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message__info > p {
+    margin: 0% 1%;
+}
+
+.message__buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message__buttons > button {
+    margin: 1% 1%;
+}

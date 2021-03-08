@@ -1,8 +1,14 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { TaskForm } from "./tasks/TaskForm"
-import { TaskList } from "./tasks/TaskList"
-import { TaskProvider } from "./tasks/TaskProvider"
+import { FriendsProvider } from "./friends/FriendsProvider"
+import { FriendList } from "./friends/FriendList"
+import { UsersProvider } from "./users/UsersProvider"
+import { UserList } from "./users/UserList"
+import { MessageList } from "./messages/MessageList"
+import { MessageProvider } from "./messages/MessageProvider"
+import { NewsArticleForm } from "./newsArticle/NewsArticleForm"
+import { NewsArticleList } from "./newsArticle/NewsArticleList"
+import { NewsArticleProvider } from "./newsArticle/NewsArticleProvider"
 
 export const ApplicationViews = () => {
   return (
@@ -11,21 +17,41 @@ export const ApplicationViews = () => {
       <Route exact path="/">
         {/* Render the component for news articles */}
       </Route>
+
+      <UsersProvider>
+        <FriendsProvider>
+          <Route path="/friends">
+            <UserList />
+            <FriendList />
+          </Route>
+        </FriendsProvider>
+      </UsersProvider>
+
+      <Route path="/messages">
+        {/* Render the component for the messages */}
+      </Route>
+      <NewsArticleProvider>
+        <Route exact path="/">
+          <NewsArticleList />
+        </Route>
+        <Route path="/NewsArticleForm">
+          <NewsArticleForm />
+        </Route>
+      </NewsArticleProvider>
       <Route path="/friends">
         {/* Render the component for list of friends */}
       </Route>
-      <Route path="/messages">
-        {/* Render the component for the messages */}
-      </Route> 
-      <TaskProvider>
-        <Route exact path="/tasks">
-          {/* Render the component for the user's tasks */}
-            <TaskList />
+
+      <MessageProvider>
+        <Route path="/messages">
+          <MessageList />
         </Route>
-        <Route path="/tasks/create">
-            <TaskForm />
-        </Route>
-      </TaskProvider>
+      </MessageProvider>
+
+
+      <Route path="/tasks">
+        {/* Render the component for the user's tasks */}
+      </Route>
       <Route path="/events">
         {/* Render the component for the user's events */}
       </Route>
