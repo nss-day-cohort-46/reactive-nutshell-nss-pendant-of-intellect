@@ -9,6 +9,9 @@ import { MessageProvider } from "./messages/MessageProvider"
 import { NewsArticleForm } from "./newsArticle/NewsArticleForm"
 import { NewsArticleList } from "./newsArticle/NewsArticleList"
 import { NewsArticleProvider } from "./newsArticle/NewsArticleProvider"
+import { TaskList } from "./tasks/TaskList"
+import { TaskProvider } from "./tasks/TaskProvider"
+import { TaskForm } from "./tasks/TaskForm"
 
 export const ApplicationViews = () => {
   return (
@@ -48,10 +51,15 @@ export const ApplicationViews = () => {
         </Route>
       </MessageProvider>
 
-
-      <Route path="/tasks">
-        {/* Render the component for the user's tasks */}
-      </Route>
+      <TaskProvider>
+        <Route path="/tasks/create">
+          <TaskForm />
+        </Route>
+        <Route path="/tasks">
+          {/* Render the component for the user's tasks */}
+          <TaskList />
+        </Route>
+      </TaskProvider>
       <Route path="/events">
         {/* Render the component for the user's events */}
       </Route>
