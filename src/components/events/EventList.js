@@ -4,13 +4,16 @@
 // the user should see, then sorts them chronologically by event date. That's then mapped out into Event Cards.
 
 import React, { useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router'
 import { EventCard } from './EventCard'
 import { EventContext } from './EventProvider'
+import './EventList.css'
 
 export const EventList = () => {
     const { events, getEvents } = useContext(EventContext)
     const [sortedEvents, setSortedEvents] = useState([])
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
+    const history = useHistory()
 
     useEffect(() => {
         getEvents()
@@ -26,6 +29,7 @@ export const EventList = () => {
 
     return (
         <section className="events">
+            <button onClick={() => history.push(`/events/create`)} id="addEventButton" className="button btn-create">Add an Event</button>
             {
                 sortedEvents.map(event => {
                     return <EventCard key={event.id} event={event} />

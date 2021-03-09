@@ -43,7 +43,7 @@ export const MessageList = () => {
                     let currentUser = false
                     const user = users.find(u => u.id === m.userId)
                     if (currentUserId === m.userId) currentUser = true
-                    return <MessageCard key={messages.id} message={m} user={user} currentUser={currentUser} />
+                    return <MessageCard key={m.id} message={m} user={user} currentUser={currentUser} />
                 })
             }
             <div className="newMessage">
