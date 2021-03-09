@@ -30,12 +30,17 @@ export const UserList = () => {
 
     const otherUsers = users.filter(user => user.id !== parseInt(sessionStorage.nutshell_user))
 
-    
+    const render = () => {
+        if (searchTerms !== "") {
+            return filteredUsers.map(user => <UserCard key={user.id} user={user}/>)
+        }
+    }
+
     return (
         <>
             <h1>Users:</h1>
             <UserSearch />
-            {filteredUsers.map(user => <UserCard key={user.id} user={user}/>)}
+            {render()}
         </>
     )
 }
