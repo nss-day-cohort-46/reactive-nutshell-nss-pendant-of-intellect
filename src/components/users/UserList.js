@@ -40,7 +40,7 @@ export const UserList = () => {
 
     return (
         <>
-            <h1>All Users (exluding currentUser):</h1>
+            <h1>Users:</h1>
             <div className="users">
                 {filteredUsers.map(user => <UserCard key={user.id} user={user} />)}
             </div>
