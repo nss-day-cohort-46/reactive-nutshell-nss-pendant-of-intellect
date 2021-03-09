@@ -32,7 +32,12 @@ export const EventList = () => {
             <button onClick={() => history.push(`/events/create`)} id="addEventButton" className="button btn-create">Add an Event</button>
             {
                 sortedEvents.map(event => {
-                    return <EventCard key={event.id} event={event} />
+                    const upNext = sortedEvents.filter(event => {
+                        const rightNow = Date.now()
+                        return new Date(event.date).valueOf() > rightNow
+                    })[0]
+                    const special = event === upNext
+                    return <EventCard key={event.id} event={event} special={special}/>
                 })
             }
         </section>
