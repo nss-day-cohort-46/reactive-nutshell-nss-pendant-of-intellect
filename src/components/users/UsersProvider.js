@@ -19,7 +19,7 @@ export const UsersProvider = (props) => {
 
     return (
         <UsersContext.Provider value={{
-            users, getUsers
+            users, getUsers, searchTerms, setSearchTerms
         }}>
             {props.children}
         </UsersContext.Provider>
