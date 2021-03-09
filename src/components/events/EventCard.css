@@ -3,6 +3,6 @@
     flex-direction: column;
 }
 
-.event__weatherButton {
+.event > button {
     align-self: flex-end;
 }
