@@ -25,14 +25,25 @@ export const UserList = () => {
 
     useEffect(() => {
         if(searchTerms !== "") {
-            const subset = otherUsers.filter(user => user.name.toLowerCase().includes(searchTerms.toLowerCase()))
+            const subset = otherUsers().filter(user => user.name.toLowerCase().includes(searchTerms.toLowerCase()))
             setFilteredUsers(subset)
         }else{
-            setFilteredUsers(otherUsers)
+            setFilteredUsers(otherUsers())
         }
     }, [searchTerms, users])
 
-    const otherUsers = users.filter(user => user.id !== parseInt(sessionStorage.nutshell_user))
+    const otherUsers = () => {
+        let isFriends = false
+        return users.filter(user => {
+            const friendCheck = filteredFriends.find(f => f.userId === user.id)
+            if (friendCheck !== undefined) {
+                user.isFriends = true
+            } else {
+                user.isFriends = isFriends
+            }
+            return user.id !== parseInt(sessionStorage.nutshell_user)
+        })
+    }
 
     const render = () => {
         if (searchTerms !== "") {
