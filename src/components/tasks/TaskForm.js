@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { TaskContext } from "./TaskProvider"
 import "./Tasks.css"
 
 export const TaskForm = () => {
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
     // console.log("userid", currentUserId)
-    const {tasks, getTasks, addTask} = useContext(TaskContext)
+    const {tasks, getTasks, addTask, ModifyTask} = useContext(TaskContext)
 
     const [task, setTask] = useState({
         name: "",
@@ -14,6 +14,9 @@ export const TaskForm = () => {
         completedByDate: "",
         complete: false
     })
+    const [isLoading, setIsLoading] = useState()
+    
+    const {taskId}= useParams()
 
     const history = useHistory()
 
@@ -24,10 +27,11 @@ export const TaskForm = () => {
     }
 
     const saveTask = () => {
-       if (task.name && task.completedByDate === "") {
+       if (task.name || task.completedByDate === "") {
         window.alert("Please fill in all inputs")
        }
        else{
+           setIsLoading(true)
            addTask(task)
            .then(() => history.push("/tasks"))
        }

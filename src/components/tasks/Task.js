@@ -1,9 +1,10 @@
 import { React, useState, useContext } from "react";
+import { useHistory } from "react-router";
 import { TaskContext } from "./TaskProvider";
 
 export const TaskCard = ({taskObj}) => {
     const {updateTasks, removeTask} = useContext(TaskContext)
-    
+    const history = useHistory()
     const [task, setTask] = useState({
         complete: false
     })
@@ -42,6 +43,8 @@ export const TaskCard = ({taskObj}) => {
                     <div>{taskObj.name}</div>
                     </label>
                 <button className="btn-removeTask" onClick={removeTaskClicked}>x</button>
+                <button className="btn-editTask" onClick={() => {
+                    history.push(`/tasks/edit/${taskObj.id}`)}}>Edit</button>
                 </section>
             </>
 
