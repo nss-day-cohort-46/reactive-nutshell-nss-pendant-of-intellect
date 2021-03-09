@@ -5,6 +5,7 @@
  **/
 
 import React, { useContext, useEffect, useState } from "react"
+import { FriendsContext } from "../friends/FriendsProvider"
 import { UsersContext } from "./UsersProvider"
 import { UserCard } from "./UserCard"
 // import "./User.css"
@@ -23,6 +24,7 @@ export const UserList = () => {
     }, [users])
 
     const filterUsers = () => {
+
         return users.filter(user => user.id !== parseInt(sessionStorage.nutshell_user))
     }
 
