@@ -58,6 +58,7 @@ export const TaskForm = () => {
                     saveTask()}}>
                 Save Task
             </button>
+            <button className="closeNewTask" onClick={() => history.push("/tasks")}>x</button>
             </form>
         </>
     )
