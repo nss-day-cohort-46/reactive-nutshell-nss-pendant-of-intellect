@@ -20,6 +20,17 @@ export const FriendsProvider = (props) => {
             .then(setFriends)
     }
 
+    const addFriends = (friendObj) => {
+        return fetch("http://localhost:8088/friends", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(friendObj)
+        })
+            .then(getFriends)
+    }
+
     const filterFriends = () => {
         return friends.filter(friend => friend.currentUserId === parseInt(sessionStorage.nutshell_user))
     }
@@ -30,7 +41,7 @@ export const FriendsProvider = (props) => {
 
     return (
         <FriendsContext.Provider value={{
-            friends, filteredFriends, getFriends
+            friends, filteredFriends, getFriends, addFriends
         }}>
             {props.children}
         </FriendsContext.Provider>

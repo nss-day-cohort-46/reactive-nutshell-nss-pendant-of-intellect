@@ -3,13 +3,21 @@
  *  PURPOSE: This module provides takes data from userList and,
  * returns an individual user card
  **/
-import React from "react"
+ import React, { useContext } from "react"
+ import { FriendsContext } from "../friends/FriendsProvider"
 
 export const UserCard = ({ user }) => {
+    const { addFriends } = useContext(FriendsContext)
+
+    const handleClickAddFriend = (event) => {
+        const currentUserId = parseInt(sessionStorage.nutshell_user)
+
+    }
+
     return (
         <div className="user">
         <h3>{user.name}</h3>
-        {user.isFriends ? <button className="btn--delete">Remove</button> : <button className="btn--save">Add</button>}
+        {user.isFriends ? <button className="btn--delete">Remove</button> : <button className="btn--save" onClick={handleClickAddFriend}>Add</button>}
         <div>Friends? {user.isFriends ? "yes" : "no"} </div>
         </div>
     )
