@@ -23,6 +23,10 @@ export const FriendConfirm = () => {
             })
     }, [])
 
+    useEffect(() => {
+        getFriends()
+    }, [])
+
     const handleClickAddFriend = (event) => {
         const newFriend = {
             currentUserId: currentUserId,
