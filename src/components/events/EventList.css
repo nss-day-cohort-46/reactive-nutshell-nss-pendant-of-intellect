@@ -1,0 +1,8 @@
+.events{
+    display: flex;
+    flex-direction: column;
+}
+
+#addEventButton {
+    align-self: center;
+}

@@ -7,6 +7,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { FriendsContext } from "../friends/FriendsProvider"
 import { UsersContext } from "./UsersProvider"
+import { UserSearch } from "./UserSearch"
 import { UserCard } from "./UserCard"
 // import "./User.css"
 
@@ -14,7 +15,7 @@ export const UserList = () => {
     const [filteredUsers, setFilteredUsers] = useState([])
     const { filteredFriends, getFriends } = useContext(FriendsContext)
 
-    const { users, getUsers } = useContext(UsersContext)
+    const { users, getUsers, searchTerms } = useContext(UsersContext)
 
     useEffect(() => {
         getFriends()
@@ -23,27 +24,38 @@ export const UserList = () => {
     
 
     useEffect(() => {
-        setFilteredUsers(filterUsers())
-    }, [users])
-    
-    const filterUsers = () => {
+        if(searchTerms !== "") {
+            const subset = otherUsers().filter(user => user.name.toLowerCase().includes(searchTerms.toLowerCase()))
+            setFilteredUsers(subset)
+        }else{
+            setFilteredUsers(otherUsers())
+        }
+    }, [searchTerms, users])
+
+    const otherUsers = () => {
         let isFriends = false
         return users.filter(user => {
             const friendCheck = filteredFriends.find(f => f.userId === user.id)
-            if ( friendCheck !== undefined) {
+            if (friendCheck !== undefined) {
                 user.isFriends = true
             } else {
                 user.isFriends = isFriends
             }
-            return user.id !== parseInt(sessionStorage.nutshell_user)})
+            return user.id !== parseInt(sessionStorage.nutshell_user)
+        })
+    }
+
+    const render = () => {
+        if (searchTerms !== "") {
+            return filteredUsers.map(user => <UserCard key={user.id} user={user}/>)
+        }
     }
 
     return (
         <>
-            <h1>Users:</h1>
-            <div className="users">
-                {filteredUsers.map(user => <UserCard key={user.id} user={user} />)}
-            </div>
+            <h1>Find Friends:</h1>
+            <UserSearch />
+            {render()}
         </>
     )
 }
