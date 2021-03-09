@@ -21,9 +21,20 @@ export const TaskProvider = (props) => {
         .then(getTasks)
     }
 
+    const updateTasks = (taskId, checked) => {
+        return fetch(`http://localhost:8088/tasks/${taskId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(checked)
+        })
+          .then(getTasks)
+      }
+
     return (
         <TaskContext.Provider value={{
-            tasks, getTasks, addTask
+            tasks, getTasks, addTask, updateTasks
         }}>
             {props.children}
         </TaskContext.Provider>

@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { FriendsProvider } from "./friends/FriendsProvider"
 import { FriendList } from "./friends/FriendList"
+import { FriendConfirm } from "./friends/FriendConfirm"
 import { UsersProvider } from "./users/UsersProvider"
 import { UserList } from "./users/UserList"
 import { MessageList } from "./messages/MessageList"
@@ -14,6 +15,7 @@ import { TaskProvider } from "./tasks/TaskProvider"
 import { TaskForm } from "./tasks/TaskForm"
 import { EventProvider } from "./events/EventProvider"
 import { EventList } from "./events/EventList"
+import { EventForm } from "./events/EventForm"
 
 export const ApplicationViews = () => {
   return (
@@ -25,9 +27,13 @@ export const ApplicationViews = () => {
 
       <UsersProvider>
         <FriendsProvider>
-          <Route path="/friends">
+          <Route exact path="/friends">
             <UserList />
             <FriendList />
+          </Route>
+
+          <Route exact path = "/friends/add/:userId(\d+)">
+            <FriendConfirm />
           </Route>
         </FriendsProvider>
       </UsersProvider>
@@ -66,9 +72,16 @@ export const ApplicationViews = () => {
       </TaskProvider>
 
       <EventProvider>
-        <Route path="/events">
+
+        <Route exact path="/events">
           <EventList />
         </Route>
+
+        <Route path="/events/create">
+          <EventForm />
+          <EventList />
+        </Route>
+        
       </EventProvider>
     </>
   )

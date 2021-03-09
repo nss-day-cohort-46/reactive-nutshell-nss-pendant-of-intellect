@@ -1,3 +1,7 @@
+// Created by Alex Martin
+
+// Handles state variable for events as well as all API communication for events
+
 import React, { createContext, useState } from 'react'
 
 export const EventContext = createContext()

@@ -38,7 +38,7 @@ export const TaskForm = () => {
 
     return (
         <>
-            <h2>My Tasks</h2>
+            <h2>New Task</h2>
             <form>
                 <fieldset className="task__name">
                 <div className="form__task">

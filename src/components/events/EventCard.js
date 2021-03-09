@@ -1,3 +1,7 @@
+// Created by Alex Martin
+
+// This module renders all events called from EventList.js to the DOM
+
 import React, { useContext } from 'react'
 import './EventCard.css'
 import { EventContext } from './EventProvider'
