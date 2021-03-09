@@ -5,9 +5,13 @@
  **/
  import React, { useContext } from "react"
  import { FriendsContext } from "../friends/FriendsProvider"
+ import { UsersContext } from "./UsersProvider"
+
 
 export const UserCard = ({ user }) => {
     const { addFriends } = useContext(FriendsContext)
+    const { getUsers } = useContext(UsersContext)
+
 
     const handleClickAddFriend = (event) => {
         const currentUserId = parseInt(sessionStorage.nutshell_user)
@@ -16,6 +20,7 @@ export const UserCard = ({ user }) => {
             userId: user.id
         }
         addFriends(newFriend)
+        .then(getUsers)
     }
 
     return (
