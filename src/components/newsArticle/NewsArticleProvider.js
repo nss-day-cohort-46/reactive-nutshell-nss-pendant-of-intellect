@@ -12,9 +12,20 @@ export const NewsArticleProvider = (props) => {
         .then(setNewsArticles)
     }
 
+    const addNewsArticle = (articleObj) => {
+        return fetch("http://localhost:8088/articles", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(articleObj)
+        })
+        .then(getNewsArticles)
+    }
+
     return (
         <NewsArticleContext.Provider value={{
-            newsArticles, getNewsArticles
+            newsArticles, getNewsArticles, addNewsArticle
         }}>
             {props.children}
         </NewsArticleContext.Provider>

@@ -4,7 +4,8 @@ export const NewsArticleForm = () => {
     const [article, setArticle] = useState({
         "title": "",
         "synopsis": "",
-        "url": ""
+        "url": "",
+        "userId": 0
     })
 
     const handleChangeInput = event => {
@@ -14,7 +15,12 @@ export const NewsArticleForm = () => {
         setArticle(newArticle)
     }
 
-    const handleSaveClick = () => {}
+    const handleSaveClick = () => {
+        if (article.title !== "" && article.synopsis !== "" && article.url !== "") {
+
+        }
+    }
+
     return (
 
         <form>
@@ -34,10 +40,10 @@ export const NewsArticleForm = () => {
             <input name="article--url" id="url" value={article.url} onChange={handleChangeInput}></input>
             </fieldset>
 
-            <button className="btn--saveArticle" onClick={event => 
+            <button className="btn--saveArticle" onClick={event => {
             event.preventDefault()
-            
-            }>Add Article</button>
+            handleSaveClick()
+            }}>Add Article</button>
 
         </form>
     )
