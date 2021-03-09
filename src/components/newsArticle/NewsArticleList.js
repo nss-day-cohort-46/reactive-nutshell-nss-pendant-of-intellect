@@ -13,26 +13,30 @@ export const NewsArticleList = () => {
     const { users, getUsers } = useContext(UsersContext)
     const { filteredFriends, getFriends } = useContext(FriendsContext)
 
-    const [articleList, setArticleList] = useState()
-
     const history = useHistory()
+
+    const [articles, setArticles] = useState([])
 
     useEffect(() => {
         getUsers()
-        .then(getFriends)
         .then(getNewsArticles)
+        .then(getFriends)
+        .then(console.log(newsArticles))
     }, [])
+
+    useEffect(() => {
+        setArticles(newsArticles.sort(((firstArticle, nextArticle) => {return nextArticle.timestamp - firstArticle.timestamp})))
+    }, [newsArticles])
     
 
     return (
         <article className="article">
             <h1>Articles</h1>
             <button className="btn--addArticle" onClick={() => {history.push("/NewsArticleForm")}}>New Article</button>
-             {newsArticles.map(article => {
+             
+            {articles.map(article => {
                  const currentUser = users.find(userObj => parseInt(sessionStorage.getItem("nutshell_user")) === userObj.id)
-                // Call ArticleCard and pass in articles that have the user or friend ID?
-                // debugger
-                // debugger
+
                 if(filteredFriends.length > 0){
                 return filteredFriends.map(friend => {
                     // debugger
