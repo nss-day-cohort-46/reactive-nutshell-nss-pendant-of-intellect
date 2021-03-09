@@ -13,6 +13,7 @@ export const FriendConfirm = () => {
     const { filteredFriends, getFriends, addFriends } = useContext(FriendsContext)
     const { getUserById } = useContext(UsersContext)
     const { userId } = useParams()
+    const history = useHistory()
     const currentUserId = parseInt(sessionStorage.nutshell_user)
 
     useEffect(() => {
@@ -23,7 +24,15 @@ export const FriendConfirm = () => {
     }, [])
 
     const handleClickAddFriend = (event) => {
-        console.log(event.target)
+        const newFriend = {
+            currentUserId: currentUserId,
+            userId: user.id
+        }
+        addFriends(newFriend)
+        .then(() => {
+            window.alert("Added!")
+            history.push("/messages")
+        })
     }
 
     // write a function that checks for:
@@ -53,7 +62,6 @@ export const FriendConfirm = () => {
             return (
                 <>
                     Add {user.name} as a friend?
-
                     <button className="btn--save" onClick={handleClickAddFriend}>CONFIRM</button>
                     <Link to="/messages">
                         <button className="btn--save">CANCEL</button>
