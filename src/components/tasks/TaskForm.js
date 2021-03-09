@@ -12,6 +12,7 @@ export const TaskForm = () => {
         name: "",
         userId: currentUserId,
         completedByDate: "",
+        complete: false
     })
 
     const history = useHistory()

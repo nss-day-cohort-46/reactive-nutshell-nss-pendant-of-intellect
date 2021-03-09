@@ -19,6 +19,7 @@ export const TaskList = () => {
                 {
                     tasks.map(task => <TaskCard key={task.id} taskObj={task} />)
                 }
+                <button className="btn-checkTask">Tasks Complete</button>
                 <button onClick={() => history.push("/tasks/create")}>Add New Task</button>
             </div>
         </>
