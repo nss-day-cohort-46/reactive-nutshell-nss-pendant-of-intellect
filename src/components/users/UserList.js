@@ -24,10 +24,10 @@ export const UserList = () => {
 
 
     useEffect(() => {
-        if (searchTerms !== "") {
+        if(searchTerms !== "") {
             const subset = otherUsers().filter(user => user.name.toLowerCase().includes(searchTerms.toLowerCase()))
             setFilteredUsers(subset)
-        } else {
+        }else{
             setFilteredUsers(otherUsers())
         }
     }, [searchTerms, users])
@@ -44,7 +44,6 @@ export const UserList = () => {
             return user.id !== parseInt(sessionStorage.nutshell_user)
         })
     }
-
 
     const render = () => {
         if (searchTerms !== "") {
