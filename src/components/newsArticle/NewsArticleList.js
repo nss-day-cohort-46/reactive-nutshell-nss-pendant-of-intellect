@@ -2,11 +2,13 @@
 // Purpose: render list of articles 
 import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router"
+import { UsersContext } from "../users/UsersProvider"
 import { NewsArticleContext } from "./NewsArticleProvider"
 
 export const NewsArticleList = () => {
     
     const { newsArticles, getNewsArticles } = useContext(NewsArticleContext)
+    const { users, getUsers } = useContext(UsersContext)
 
     const history = useHistory()
 
