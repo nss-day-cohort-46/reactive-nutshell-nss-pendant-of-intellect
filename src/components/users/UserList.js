@@ -12,7 +12,7 @@ import { UserCard } from "./UserCard"
 export const UserList = () => {
     const [filteredUsers, setFilteredUsers] = useState([])
 
-    const { users, getUsers } = useContext(UsersContext)
+    const { users, getUsers, searchTerms } = useContext(UsersContext)
 
     useEffect(() => {
         getUsers()
