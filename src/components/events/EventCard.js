@@ -1,3 +1,7 @@
+// Created by Alex Martin
+
+// This module renders all events called from EventList.js to the DOM
+
 import React from 'react'
 import './EventCard.css'
 
