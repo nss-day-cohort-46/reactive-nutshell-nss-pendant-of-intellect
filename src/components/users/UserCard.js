@@ -7,6 +7,9 @@ import React from "react"
 
 export const UserCard = ({ user }) => {
     return (
+        <div className="user">
         <h3>{user.name}</h3>
+        <button className="btn--save">Add</button>
+        </div>
     )
 }

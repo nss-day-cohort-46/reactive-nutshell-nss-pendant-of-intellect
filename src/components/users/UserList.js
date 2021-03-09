@@ -25,11 +25,13 @@ export const UserList = () => {
     const filterUsers = () => {
         return users.filter(user => user.id !== parseInt(sessionStorage.nutshell_user))
     }
-    
+
     return (
         <>
             <h1>All Users (exluding currentUser):</h1>
-            {filteredUsers.map(user => <UserCard key={user.id} user={user}/>)}
+            <div className="users">
+                {filteredUsers.map(user => <UserCard key={user.id} user={user} />)}
+            </div>
         </>
     )
 }
