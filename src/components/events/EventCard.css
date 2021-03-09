@@ -1,0 +1,8 @@
+.event {
+    display: flex;
+    flex-direction: column;
+}
+
+.event__weatherButton {
+    align-self: flex-end;
+}
