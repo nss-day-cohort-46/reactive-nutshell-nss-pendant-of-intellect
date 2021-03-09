@@ -1,3 +1,8 @@
+// Created by Alex Martin
+
+// called when a user clicks on "Events" in the NavBar, this module gets all events, filters them down to only events
+// the user should see, then sorts them chronologically by event date. That's then mapped out into Event Cards.
+
 import React, { useContext, useEffect, useState } from 'react'
 import { EventCard } from './EventCard'
 import { EventContext } from './EventProvider'
