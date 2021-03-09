@@ -12,20 +12,30 @@ import { UserCard } from "./UserCard"
 
 export const UserList = () => {
     const [filteredUsers, setFilteredUsers] = useState([])
+    const { filteredFriends, getFriends } = useContext(FriendsContext)
 
     const { users, getUsers } = useContext(UsersContext)
 
     useEffect(() => {
-        getUsers()
+        getFriends()
+        .then(getUsers)
     }, [])
+    
 
     useEffect(() => {
         setFilteredUsers(filterUsers())
     }, [users])
-
+    
     const filterUsers = () => {
-
-        return users.filter(user => user.id !== parseInt(sessionStorage.nutshell_user))
+        let isFriends = false
+        return users.filter(user => {
+            const friendCheck = filteredFriends.find(f => f.userId === user.id)
+            if ( friendCheck !== undefined) {
+                user.isFriends = true
+            } else {
+                user.isFriends = isFriends
+            }
+            return user.id !== parseInt(sessionStorage.nutshell_user)})
     }
 
     return (

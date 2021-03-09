@@ -10,6 +10,7 @@ export const UserCard = ({ user }) => {
         <div className="user">
         <h3>{user.name}</h3>
         <button className="btn--save">Add</button>
+        <div>Friends? {user.isFriends ? "yes" : "no"} </div>
         </div>
     )
 }
