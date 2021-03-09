@@ -5,7 +5,7 @@
 import React from 'react'
 import './MessageCard.css'
 
-export const MessageCard = ({ message, currentUser }) => {
+export const MessageCard = ({ message, user, currentUser }) => {
     let userButtons
     if (currentUser) {
         userButtons =
@@ -16,7 +16,7 @@ export const MessageCard = ({ message, currentUser }) => {
     }
     return (
         <article className="message message--card">
-            <div className="message_text">(user {message.userId}) {message.text}</div>
+            <div className="message_text"><em>{user.name}:</em> {message.text}</div>
             <div className="message__info">
                 <p className="message__info--timestamp">{new Date(message.timestamp).toLocaleString('en-US')}</p>
             </div>

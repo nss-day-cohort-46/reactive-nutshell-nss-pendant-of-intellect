@@ -9,14 +9,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import { MessageCard } from './MessageCard'
 import { MessageContext } from './MessageProvider'
 import './MessageList.css'
+import { UsersContext } from '../users/UsersProvider'
 
 export const MessageList = () => {
     const { messages, getMessages, addMessage } = useContext(MessageContext)
+    const { users, getUsers } = useContext(UsersContext)
     const [newText, setNewText] = useState("")
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
 
     useEffect(() => {
-        getMessages()
+        getUsers()
+            .then(getMessages)
     }, [])
 
     const handleChange = text => {
@@ -38,8 +41,9 @@ export const MessageList = () => {
             {
                 messages.map(m => {
                     let currentUser = false
+                    const user = users.find(u => u.id === m.userId)
                     if (currentUserId === m.userId) currentUser = true
-                    return <MessageCard key={messages.id} message={m} currentUser={currentUser} />
+                    return <MessageCard key={messages.id} message={m} user={user} currentUser={currentUser} />
                 })
             }
             <div className="newMessage">
