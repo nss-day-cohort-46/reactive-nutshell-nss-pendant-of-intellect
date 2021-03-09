@@ -29,6 +29,7 @@ export const TaskForm = () => {
        }
        else{
            addTask(task)
+           .then(() => history.push("/tasks"))
        }
     }
     useEffect(()=>{
