@@ -4,29 +4,18 @@
  * passes it to FriendCard, then renders FriendCard for each friend.
  **/
 
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { FriendsContext } from "./FriendsProvider"
 import { FriendCard } from "./FriendCard"
 // import "./Friend.css"
 
 export const FriendList = () => {
 
-    // Manages state of friends of the current user
-    const [filteredFriends, setFilteredFriends] = useState([])
-
-    const { friends, getFriends } = useContext(FriendsContext)
+    const { filteredFriends, getFriends } = useContext(FriendsContext)
 
     useEffect(() => {
         getFriends()
     }, [])
-
-    useEffect(() => {
-        setFilteredFriends(filterFriends())
-    }, [friends])
-
-    const filterFriends = () => {
-        return friends.filter(friend => friend.currentUserId === parseInt(sessionStorage.nutshell_user))
-    }
 
     return (
         <>

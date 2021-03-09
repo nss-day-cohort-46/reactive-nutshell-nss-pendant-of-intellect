@@ -5,6 +5,7 @@
  **/
 
 import React, { useContext, useEffect, useState } from "react"
+import { FriendsContext } from "../friends/FriendsProvider"
 import { UsersContext } from "./UsersProvider"
 import { UserSearch } from "./UserSearch"
 import { UserCard } from "./UserCard"
@@ -12,12 +13,15 @@ import { UserCard } from "./UserCard"
 
 export const UserList = () => {
     const [filteredUsers, setFilteredUsers] = useState([])
+    const { filteredFriends, getFriends } = useContext(FriendsContext)
 
     const { users, getUsers, searchTerms } = useContext(UsersContext)
 
     useEffect(() => {
-        getUsers()
+        getFriends()
+        .then(getUsers)
     }, [])
+    
 
     useEffect(() => {
         if(searchTerms !== "") {
