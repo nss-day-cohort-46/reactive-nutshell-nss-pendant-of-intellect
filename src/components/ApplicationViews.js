@@ -45,11 +45,13 @@ export const ApplicationViews = () => {
         {/* Render the component for list of friends */}
       </Route>
 
-      <MessageProvider>
-        <Route path="/messages">
-          <MessageList />
-        </Route>
-      </MessageProvider>
+      <UsersProvider>
+        <MessageProvider>
+          <Route path="/messages">
+            <MessageList />
+          </Route>
+        </MessageProvider>
+      </UsersProvider>
 
       <TaskProvider>
         <Route path="/tasks/create">
