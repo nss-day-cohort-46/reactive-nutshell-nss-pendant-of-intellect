@@ -1,3 +1,21 @@
 strong {
   font-weight: bold;
 }
+
+.button {
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.btn--edit {
+  background-color: yellow;
+}
+
+.btn--delete {
+  background-color: tomato;
+}
+
+.btn--create {
+  background-color: yellowgreen;
+}
