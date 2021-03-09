@@ -11,7 +11,11 @@ export const UserCard = ({ user }) => {
 
     const handleClickAddFriend = (event) => {
         const currentUserId = parseInt(sessionStorage.nutshell_user)
-
+        const newFriend = {
+            currentUserId: currentUserId,
+            userId: user.id
+        }
+        addFriends(newFriend)
     }
 
     return (
