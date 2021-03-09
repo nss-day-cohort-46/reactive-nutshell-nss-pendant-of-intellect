@@ -12,6 +12,8 @@ import { NewsArticleProvider } from "./newsArticle/NewsArticleProvider"
 import { TaskList } from "./tasks/TaskList"
 import { TaskProvider } from "./tasks/TaskProvider"
 import { TaskForm } from "./tasks/TaskForm"
+import { EventProvider } from "./events/EventProvider"
+import { EventList } from "./events/EventList"
 
 export const ApplicationViews = () => {
   return (
@@ -62,9 +64,12 @@ export const ApplicationViews = () => {
           <TaskList />
         </Route>
       </TaskProvider>
-      <Route path="/events">
-        {/* Render the component for the user's events */}
-      </Route>
+
+      <EventProvider>
+        <Route path="/events">
+          <EventList />
+        </Route>
+      </EventProvider>
     </>
   )
 }
