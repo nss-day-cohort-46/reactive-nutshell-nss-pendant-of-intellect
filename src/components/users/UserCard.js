@@ -3,9 +3,9 @@
  *  PURPOSE: This module provides takes data from userList and,
  * returns an individual user card
  **/
- import React, { useContext } from "react"
- import { FriendsContext } from "../friends/FriendsProvider"
- import { UsersContext } from "./UsersProvider"
+import React, { useContext } from "react"
+import { FriendsContext } from "../friends/FriendsProvider"
+import { UsersContext } from "./UsersProvider"
 
 
 export const UserCard = ({ user }) => {
@@ -20,13 +20,13 @@ export const UserCard = ({ user }) => {
             userId: user.id
         }
         addFriends(newFriend)
-        .then(getUsers)
+            .then(getUsers)
     }
 
     return (
         <div className="user">
-        <h3>{user.name}</h3>
-        {user.isFriends ? <div>Friends</div> : <button className="btn--save" onClick={handleClickAddFriend}>Add</button>}
+            <h3>{user.name}</h3>
+            {user.isFriends ? <div>Friends</div> : <button className="btn--save" onClick={handleClickAddFriend}>Add</button>}
         </div>
     )
 }
