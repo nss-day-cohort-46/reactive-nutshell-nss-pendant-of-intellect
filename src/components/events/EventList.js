@@ -5,13 +5,15 @@ import { EventContext } from './EventProvider'
 export const EventList = () => {
     const { events, getEvents } = useContext(EventContext)
     const [sortedEvents, setSortedEvents] = useState([])
+    const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
 
     useEffect(() => {
         getEvents()
     }, [])
 
     useEffect(() => {
-        const sortedByDate = events.sort((a, b) => {
+        const userEvents = events.filter(e => e.userId === currentUserId)
+        const sortedByDate = userEvents.sort((a, b) => {
             return (new Date(a.date).valueOf() - new Date(b.date).valueOf())
         })
         setSortedEvents(sortedByDate)
