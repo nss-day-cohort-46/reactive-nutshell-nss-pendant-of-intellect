@@ -38,7 +38,7 @@ export const UserList = () => {
 
     return (
         <>
-            <h1>Users:</h1>
+            <h1>Find Friends:</h1>
             <UserSearch />
             {render()}
         </>
