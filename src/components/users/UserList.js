@@ -30,7 +30,7 @@ export const UserList = () => {
         let isFriends = false
         return users.filter(user => {
             const friendCheck = filteredFriends.find(f => f.userId === user.id)
-            if ( friendCheck !== undefined) {
+            if (friendCheck !== undefined) {
                 user.isFriends = true
             } else {
                 user.isFriends = isFriends
