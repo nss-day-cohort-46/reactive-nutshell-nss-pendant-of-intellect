@@ -8,8 +8,8 @@ import React, { useState, createContext, useEffect } from "react"
 export const UsersContext = createContext()
 
 export const UsersProvider = (props) => {
-
     const [users, setUsers] = useState([])
+    const [ searchTerms, setSearchTerms ] = useState("")
 
     const getUsers = () => {
         return fetch("http://localhost:8088/users")
@@ -24,7 +24,7 @@ export const UsersProvider = (props) => {
 
     return (
         <UsersContext.Provider value={{
-            users, getUsers, getUserById
+            users, getUsers, searchTerms, setSearchTerms, getUserById
         }}>
             {props.children}
         </UsersContext.Provider>
