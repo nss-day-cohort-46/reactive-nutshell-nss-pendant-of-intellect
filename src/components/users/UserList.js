@@ -19,9 +19,9 @@ export const UserList = () => {
 
     useEffect(() => {
         getFriends()
-        .then(getUsers)
+            .then(getUsers)
     }, [])
-    
+
 
     useEffect(() => {
         if(searchTerms !== "") {
@@ -47,7 +47,7 @@ export const UserList = () => {
 
     const render = () => {
         if (searchTerms !== "") {
-            return filteredUsers.map(user => <UserCard key={user.id} user={user}/>)
+            return filteredUsers.map(user => <UserCard key={user.id} user={user} />)
         }
     }
 

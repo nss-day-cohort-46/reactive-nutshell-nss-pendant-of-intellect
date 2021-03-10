@@ -31,6 +31,13 @@ export const FriendsProvider = (props) => {
             .then(getFriends)
     }
 
+    const removeFriend = relationshipId => {
+        return fetch(`http://localhost:8088/friends/${relationshipId}`, {
+            method: "DELETE"
+        })
+            .then(getFriends)
+    }
+
     const filterFriends = () => {
         return friends.filter(friend => friend.currentUserId === parseInt(sessionStorage.nutshell_user))
     }
@@ -41,7 +48,7 @@ export const FriendsProvider = (props) => {
 
     return (
         <FriendsContext.Provider value={{
-            friends, filteredFriends, getFriends, addFriends
+            friends, filteredFriends, getFriends, addFriends, removeFriend
         }}>
             {props.children}
         </FriendsContext.Provider>
