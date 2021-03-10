@@ -3,6 +3,7 @@
 import React from "react"
 
 export const NewsArticleCard = ({article}) => {
+    // debugger
     return (
         <section>
             <h2>{article.title}</h2>
@@ -13,8 +14,8 @@ export const NewsArticleCard = ({article}) => {
             <p>{article.synopsis}</p>
             
            {parseInt(sessionStorage.getItem("nutshell_user")) === article.userId ? 
-           <div className="article__buttons">
-           <button className="btn--delete">Edit</button><button className="btn--delete">Delete</button></div> : ""}
+           
+          <button className="btn--delete">Delete</button>: ""}
             
         </section>
     )

@@ -1,5 +1,5 @@
 // Kaitlin
-// Allows user to submit a new article
+// Allows user to submit a new article and saves article to database
 import React, { useContext, useState } from "react"
 import { useHistory } from "react-router"
 import { NewsArticleContext } from "./NewsArticleProvider"
