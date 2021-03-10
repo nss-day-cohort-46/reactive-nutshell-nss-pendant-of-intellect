@@ -2,7 +2,7 @@
 
 // This module renders all events called from EventList.js to the DOM
 
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './EventCard.css'
 import { EventContext } from './EventProvider'
 import { WeatherContext } from './weather/WeatherProvider'
@@ -17,11 +17,11 @@ export const EventCard = ({ event, isNext }) => {
 
     const handleClickWeatherButton = () => {
         getWeather(event.city, event.state)
-            .then(() => {
-                console.log(weather)
-            })
-
     }
+
+    useEffect(() => {
+        // console.log(weather)
+    }, [weather])
 
     return (
         <article className={isNext ? "event next" : "event"}>

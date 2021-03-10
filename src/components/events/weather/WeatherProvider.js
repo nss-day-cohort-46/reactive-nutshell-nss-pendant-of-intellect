@@ -7,9 +7,9 @@ export const WeatherProvider = props => {
     const [weather, setWeather] = useState({})
 
     const getWeather = (city, stateCode) => {
-        return fetch(`api.openweathermap.org/data/2.5/forecast?q=${city},${stateCode}&appid=${keys.weather}`)
+        return fetch(`api.openweathermap.org/data/2.5/forecast?q=nashville,tn,us&appid=${keys.weather}`)
             .then(res => res.json())
-            .then(setWeather)
+            .then(response => console.log(response))
     }
 
     return (
