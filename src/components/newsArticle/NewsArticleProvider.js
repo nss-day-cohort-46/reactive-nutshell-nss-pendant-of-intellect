@@ -26,9 +26,16 @@ export const NewsArticleProvider = (props) => {
         .then(getNewsArticles)
     }
 
+    const deleteNewsArticle = (articleId) => {
+        return fetch(`http://localhost:8088/articles/${articleId}`, {
+            method: "DELETE",
+        })
+        .then(getNewsArticles)
+    }
+
     return (
         <NewsArticleContext.Provider value={{
-            newsArticles, getNewsArticles, addNewsArticle
+            newsArticles, getNewsArticles, addNewsArticle, deleteNewsArticle
         }}>
             {props.children}
         </NewsArticleContext.Provider>
