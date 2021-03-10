@@ -1,3 +1,7 @@
+// Created by Alex Martin
+
+// This component reaches out to the weather API and provides a context for the weather state variable
+
 import React, { createContext, useState } from 'react'
 import { keys } from '../../../Settings'
 
@@ -7,9 +11,9 @@ export const WeatherProvider = props => {
     const [weather, setWeather] = useState({})
 
     const getWeather = (city, stateCode) => {
-        return fetch(`api.openweathermap.org/data/2.5/forecast?q=nashville,tn,us&appid=${keys.weather}`)
+        return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city},${stateCode}us&units=imperial&appid=${keys.weather}`)
             .then(res => res.json())
-            .then(response => console.log(response))
+            .then(pRes => setWeather(pRes.list))
     }
 
     return (
