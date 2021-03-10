@@ -30,13 +30,14 @@ export const TaskList = () => {
     // debugger
     if(complete){
         return (
-            <>
+            <>   
                 <h3>My Completed Tasks </h3> 
-                <p>Uncheck task to move it back into your task checklist</p>       
+                <p>Uncheck task to move it back into your task checklist</p>    
                 <div className="tasks complete">
                     {
                         completedTasks.map(task => <CompletedTaskCard key={task.id} taskObj={task} />)
                     }
+                    <button onClick={() => history.push("/tasks")}>Tasks</button>
                 </div>
             </>
         )
@@ -50,7 +51,7 @@ export const TaskList = () => {
                         userTasks.map(task => <TaskCard key={task.id} taskObj={task} />)
                     }
                     <button onClick={() => history.push("/tasks/create")}>Add New Task</button>
-                    <button onClick={() => history.push("/tasks/complete")}>See completed tasks</button>
+                    <button onClick={() => history.push("/tasks/view/complete")}>Completed tasks</button>
                 </div>
             </>
         )

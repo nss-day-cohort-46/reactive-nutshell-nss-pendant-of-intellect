@@ -42,6 +42,7 @@ export const CompletedTaskCard = ({taskObj}) => {
     
         return(
             <>
+                
                 <div>Complete by: {taskObj.completedByDate}</div>
                 <section>
                     <input type= "checkbox" id="complete" defaultChecked onClick={handleChange}></input>
