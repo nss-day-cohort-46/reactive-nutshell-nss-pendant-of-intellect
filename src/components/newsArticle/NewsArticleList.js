@@ -42,11 +42,9 @@ export const NewsArticleList = () => {
         
         // Concats array of current user's articles and array of friends' articles
         filteredArticles = friendArticles.concat(currentUserArticles)
-        console.log("SET FILTERED ARTICLES", filteredArticles)
 
         // Sorts articles by timestamp in descending order
         setArticlesToRender(filteredArticles.sort(((firstArticle, nextArticle) => { return nextArticle.timestamp - firstArticle.timestamp })))
-        console.log("articles after setArticles", articles)
 
     }, [newsArticles, filteredFriends, users])
 

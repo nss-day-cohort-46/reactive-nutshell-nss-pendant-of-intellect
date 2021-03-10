@@ -12,7 +12,13 @@ export const NewsArticleProvider = (props) => {
         return fetch("http://localhost:8088/articles?_expand=user")
         .then(res => res.json())
         .then(setNewsArticles)
-        .then(() => console.log("articles in provider",newsArticles))
+    }
+
+    const getNewsArticleById = (articleId) => {
+        // debugger
+        return fetch(`http://localhost:8088/articles/${articleId}`)
+        .then(res => res.json())
+        // .then(res => console.log("got the article by id", res))
     }
 
     const addNewsArticle = (articleObj) => {
@@ -26,6 +32,17 @@ export const NewsArticleProvider = (props) => {
         .then(getNewsArticles)
     }
 
+    const updateNewsArticle = articleObj => {
+        return fetch(`http://localhost:8088/tasks/${articleObj.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(articleObj)
+        })
+          .then(getNewsArticles)
+      }
+
     const deleteNewsArticle = (articleId) => {
         return fetch(`http://localhost:8088/articles/${articleId}`, {
             method: "DELETE",
@@ -35,7 +52,8 @@ export const NewsArticleProvider = (props) => {
 
     return (
         <NewsArticleContext.Provider value={{
-            newsArticles, getNewsArticles, addNewsArticle, deleteNewsArticle
+            newsArticles, getNewsArticles, addNewsArticle, deleteNewsArticle, 
+            updateNewsArticle, getNewsArticleById
         }}>
             {props.children}
         </NewsArticleContext.Provider>

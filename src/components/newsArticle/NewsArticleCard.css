@@ -4,7 +4,7 @@ section {
     padding: 1%;
 }
 
-.btn--delete {
+.btn--delete, .btn--edit {
 
  float: right;
  transform: translateY(-100%)
