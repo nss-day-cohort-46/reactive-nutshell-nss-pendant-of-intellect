@@ -9,6 +9,9 @@ export const MessageContext = createContext()
 export const MessageProvider = props => {
     const [messages, setMessages] = useState([])
 
+    // added by dan for liveChat
+    const [notification, setNotification] = useState([])
+
     const getMessages = () => {
         return fetch(`http://localhost:8088/messages`)
             .then(res => res.json())
@@ -24,6 +27,7 @@ export const MessageProvider = props => {
             body: JSON.stringify(message)
         })
             .then(getMessages)
+            .then(setNotification(""))
     }
 
     const editMessage = message => {
@@ -46,7 +50,7 @@ export const MessageProvider = props => {
 
     return (
         <MessageContext.Provider value={{
-            messages, getMessages, addMessage, editMessage, deleteMessage
+            messages, getMessages, addMessage, editMessage, deleteMessage, notification
         }}>
             {props.children}
         </MessageContext.Provider>
