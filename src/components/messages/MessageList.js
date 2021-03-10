@@ -12,7 +12,7 @@ import './MessageList.css'
 import { UsersContext } from '../users/UsersProvider'
 
 export const MessageList = () => {
-    const { messages, getMessages, addMessage, notification } = useContext(MessageContext)
+    const { messages, getMessages, addMessage } = useContext(MessageContext)
     const { users, getUsers } = useContext(UsersContext)
     const [newText, setNewText] = useState("")
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
@@ -21,12 +21,8 @@ export const MessageList = () => {
         getUsers()
             .then(getMessages)
     }, [])
-    
-    useEffect(() => {
-        getUsers()
-            .then(getMessages)
-    }, [notification])
 
+// attempted use of setInterval here, always resulted in infinite loop
 
     const handleChange = text => {
         setNewText(text)
