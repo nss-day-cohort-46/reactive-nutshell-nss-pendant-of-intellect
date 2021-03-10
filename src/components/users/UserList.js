@@ -9,7 +9,7 @@ import { FriendsContext } from "../friends/FriendsProvider"
 import { UsersContext } from "./UsersProvider"
 import { UserSearch } from "./UserSearch"
 import { UserCard } from "./UserCard"
-// import "./User.css"
+import "./Users.css"
 
 export const UserList = () => {
     const [filteredUsers, setFilteredUsers] = useState([])
@@ -55,7 +55,7 @@ export const UserList = () => {
         <div className="userSearch">
             <h1>Find Friends:</h1>
             <UserSearch />
-            <div classname="users">
+            <div className="users">
                 {render()}
             </div>
         </div>

@@ -7,6 +7,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams, Link } from 'react-router-dom';
 import { FriendsContext } from "./FriendsProvider"
 import { UsersContext } from "../users/UsersProvider"
+import "./Friends.css"
+
 
 export const FriendConfirm = () => {
     const [user, setUser] = useState({})

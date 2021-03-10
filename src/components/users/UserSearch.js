@@ -12,11 +12,10 @@ export const UserSearch = () => {
 
     return(
         <>
-            User Search:
             <input type="text"
                 className="input--wide"
                 onKeyUp={(event) => setSearchTerms(event.target.value)}
-                placeholder="Search for a user... " />
+                placeholder="Search for a friend... " />
         </>
     )
 }

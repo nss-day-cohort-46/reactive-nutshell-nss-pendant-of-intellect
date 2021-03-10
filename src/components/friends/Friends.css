@@ -1,0 +1,23 @@
+.friendList {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em;
+}
+
+.friends {
+    width: 100%;
+    flex: 0 1 75%;
+}
+
+.friends__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.friend {
+    border: solid black 1px;
+    padding: .25em;
+    margin: 1em;
+    flex: 0 1 25%;
+}
