@@ -56,7 +56,7 @@ export const NewsArticleList = () => {
             <button className="btn--addArticle" onClick={() => { history.push("/NewsArticleForm") }}>New Article</button>
             {/* maps final list of sorted articles and renders to DOM finally */}
             {articlesToRender.map(article => {
-                return <NewsArticleCard key={article.id} article={article} />
+                return <NewsArticleCard key={article.id} article={article} currentUserId={sessionStorage.nutshell_user}/>
             })}
         </article>
     )

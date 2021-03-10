@@ -4,15 +4,15 @@ import React, { useContext } from "react"
 import { NewsArticleContext} from "./NewsArticleProvider"
 
 
-export const NewsArticleCard = ({article}) => {
+export const NewsArticleCard = ({article, currentUserId}) => {
+    
     const {deleteNewsArticle} = useContext(NewsArticleContext)
 
     const handleDeleteClick = (event) => {
         deleteNewsArticle(article.id)
     }
-    
     return (
-        <section>
+        <section className={parseInt(currentUserId )=== article.userId ? "currentUser" : "friend"}>
             <h2>{article.title}</h2>
             <div className="article__info">
                 <p>{article.user.name}</p>
