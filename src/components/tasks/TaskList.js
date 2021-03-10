@@ -51,7 +51,7 @@ export const TaskList = () => {
                         userTasks.map(task => <TaskCard key={task.id} taskObj={task} />)
                     }
                     <button onClick={() => history.push("/tasks/create")}>Add New Task</button>
-                    <button onClick={() => history.push("/tasks/view/complete")}>Completed tasks</button>
+                    <button onClick={() => history.push("/tasks/view/complete")}>Completed task list</button>
                 </div>
             </>
         )
