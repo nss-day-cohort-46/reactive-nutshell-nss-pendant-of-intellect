@@ -4,7 +4,6 @@ import { FriendsProvider } from "./friends/FriendsProvider"
 import { FriendList } from "./friends/FriendList"
 import { FriendConfirm } from "./friends/FriendConfirm"
 import { UsersProvider } from "./users/UsersProvider"
-import { UserList } from "./users/UserList"
 import { MessageList } from "./messages/MessageList"
 import { MessageProvider } from "./messages/MessageProvider"
 import { NewsArticleForm } from "./newsArticle/NewsArticleForm"
@@ -28,7 +27,6 @@ export const ApplicationViews = () => {
       <UsersProvider>
         <FriendsProvider>
           <Route exact path="/friends">
-            <UserList />
             <FriendList />
           </Route>
 

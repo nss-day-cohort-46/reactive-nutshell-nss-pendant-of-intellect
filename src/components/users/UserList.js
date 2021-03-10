@@ -24,10 +24,10 @@ export const UserList = () => {
 
 
     useEffect(() => {
-        if(searchTerms !== "") {
+        if (searchTerms !== "") {
             const subset = otherUsers().filter(user => user.name.toLowerCase().includes(searchTerms.toLowerCase()))
             setFilteredUsers(subset)
-        }else{
+        } else {
             setFilteredUsers(otherUsers())
         }
     }, [searchTerms, users])
@@ -52,10 +52,12 @@ export const UserList = () => {
     }
 
     return (
-        <>
+        <div className="userSearch">
             <h1>Find Friends:</h1>
             <UserSearch />
-            {render()}
-        </>
+            <div classname="users">
+                {render()}
+            </div>
+        </div>
     )
 }
