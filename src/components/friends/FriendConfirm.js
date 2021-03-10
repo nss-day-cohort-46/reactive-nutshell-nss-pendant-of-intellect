@@ -53,14 +53,22 @@ export const FriendConfirm = () => {
             return (
                 <section className="friendConfirm">
                     <h3 className="friendConfirm__message"> You can't be friends with yourself!</h3>
-                    <Link to="/messages"> Back to messages.</Link>
+                    <div className="friendConfirm__buttons">
+                        <Link to="/messages">
+                            <button className="btn--edit">Back to messages.</button>
+                        </Link>
+                    </div>
                 </section>
             )
         } else if (friendCheck !== undefined) {
             return (
                 <section className="friendConfirm">
                     <h3 className="friendConfirm__message">You are already friends with {user.name}.</h3>
-                    <Link to="/messages"> Back to messages.</Link>
+                    <div className="friendConfirm__buttons">
+                        <Link to="/messages">
+                            <button className="btn--edit">Back to messages.</button>
+                        </Link>
+                    </div>
                 </section>
             )
         }
@@ -68,10 +76,12 @@ export const FriendConfirm = () => {
             return (
                 <section className="friendConfirm">
                     <h3 className="friendConfirm__message">Add {user.name} as a friend?</h3>
-                    <button className="btn--create" onClick={handleClickAddFriend}>CONFIRM</button>
-                    <Link to="/messages">
-                        <button className="btn--delete">CANCEL</button>
-                    </Link>
+                    <div className="friendConfirm__buttons">
+                        <button className="btn--create" onClick={handleClickAddFriend}>CONFIRM</button>
+                        <Link to="/messages">
+                            <button className="btn--delete">CANCEL</button>
+                        </Link>
+                    </div>
                 </section>
             )
         }
