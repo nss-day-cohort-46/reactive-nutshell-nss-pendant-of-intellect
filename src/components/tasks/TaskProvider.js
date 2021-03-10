@@ -20,6 +20,10 @@ export const TaskProvider = (props) => {
         })
         .then(getTasks)
     }
+    const getTaskById = (id) => {
+      return fetch(`http://localhost:8088/tasks/${id}`)
+      .then(res => res.json())
+  }
 
     const removeTask = taskId => {
         return fetch(`http://localhost:8088/tasks/${taskId}`, {
@@ -27,13 +31,13 @@ export const TaskProvider = (props) => {
         })
             .then(getTasks)
     }
-    const ModifyTask = (taskObj, taskId) => {
-        return fetch(`http://localhost:8088/tasks/${taskId}`, {
+    const modifyTask = newTask => {
+        return fetch(`http://localhost:8088/tasks/${newTask.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(taskObj)
+          body: JSON.stringify(newTask)
         })
           .then(getTasks)
       }
@@ -51,7 +55,7 @@ export const TaskProvider = (props) => {
 
     return (
         <TaskContext.Provider value={{
-            tasks, getTasks, addTask, updateTasks, removeTask, ModifyTask
+            tasks, getTasks, addTask, updateTasks, removeTask, modifyTask, getTaskById
         }}>
             {props.children}
         </TaskContext.Provider>
