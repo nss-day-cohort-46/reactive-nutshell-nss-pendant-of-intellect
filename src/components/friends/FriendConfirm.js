@@ -7,6 +7,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams, Link } from 'react-router-dom';
 import { FriendsContext } from "./FriendsProvider"
 import { UsersContext } from "../users/UsersProvider"
+import "./Friends.css"
+
 
 export const FriendConfirm = () => {
     const [user, setUser] = useState({})
@@ -33,10 +35,10 @@ export const FriendConfirm = () => {
             userId: user.id
         }
         addFriends(newFriend)
-        .then(() => {
-            window.alert("Added!")
-            history.push("/messages")
-        })
+            .then(() => {
+                window.alert("Added!")
+                history.push("/messages")
+            })
     }
 
     // write a function that checks for:
@@ -49,28 +51,38 @@ export const FriendConfirm = () => {
 
         if (currentUserId === user.id) {
             return (
-                <>
-                    <div> You can't be friends with yourself!</div>
-                    <Link to="/messages"> Back to messages.</Link>
-                </>
+                <section className="friendConfirm">
+                    <h3 className="friendConfirm__message"> You can't be friends with yourself!</h3>
+                    <div className="friendConfirm__buttons">
+                        <Link to="/messages">
+                            <button className="btn--edit">Back to messages.</button>
+                        </Link>
+                    </div>
+                </section>
             )
         } else if (friendCheck !== undefined) {
             return (
-                <>
-                    <div>You are already friends with {user.name}.</div>
-                    <Link to="/messages"> Back to messages.</Link>
-                </>
+                <section className="friendConfirm">
+                    <h3 className="friendConfirm__message">You are already friends with {user.name}.</h3>
+                    <div className="friendConfirm__buttons">
+                        <Link to="/messages">
+                            <button className="btn--edit">Back to messages.</button>
+                        </Link>
+                    </div>
+                </section>
             )
         }
         else {
             return (
-                <>
-                    Add {user.name} as a friend?
-                    <button className="btn--save" onClick={handleClickAddFriend}>CONFIRM</button>
-                    <Link to="/messages">
-                        <button className="btn--save">CANCEL</button>
-                    </Link>
-                </>
+                <section className="friendConfirm">
+                    <h3 className="friendConfirm__message">Add {user.name} as a friend?</h3>
+                    <div className="friendConfirm__buttons">
+                        <button className="btn--create" onClick={handleClickAddFriend}>CONFIRM</button>
+                        <Link to="/messages">
+                            <button className="btn--delete">CANCEL</button>
+                        </Link>
+                    </div>
+                </section>
             )
         }
     }
