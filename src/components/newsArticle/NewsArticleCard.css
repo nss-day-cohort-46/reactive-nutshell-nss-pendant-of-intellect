@@ -1,0 +1,43 @@
+section {
+    border: solid black thin;
+    margin: 5%;
+    padding: 1%;
+}
+
+.btn--delete {
+
+ float: right;
+ transform: translateY(-100%)
+}
+
+.btn--readMore {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.article__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 14px;
+}
+
+p {
+    font-weight: bold;
+}
+
+.currentUser {
+    background-color: whitesmoke;
+}
+
+.friend {
+    font-style: italic;
+    background-color: cornsilk;
+}
