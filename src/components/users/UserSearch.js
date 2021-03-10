@@ -4,13 +4,17 @@
  * ancestor of the UserProvider so that UserList can update 
  * dynamically
  **/
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { UsersContext } from "./UsersProvider"
 
 export const UserSearch = () => {
     const { setSearchTerms } = useContext(UsersContext)
 
-    return(
+    useEffect(() => {
+        setSearchTerms("")
+    }, [])
+
+    return (
         <>
             <input type="text"
                 className="input--wide"
