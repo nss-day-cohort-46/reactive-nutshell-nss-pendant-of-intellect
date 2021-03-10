@@ -1,3 +1,12 @@
 .userSearch {
     flex: 0 1 25%;
 }
+
+.user__status {
+    font-style: italic;
+}
+
+.user {
+    margin: .5em 0 2.5em 0;
+    border: 1px solid green;
+}

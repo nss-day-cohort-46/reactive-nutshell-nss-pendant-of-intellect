@@ -26,7 +26,7 @@ export const UserCard = ({ user }) => {
     return (
         <div className="user">
             <h3>{user.name}</h3>
-            {user.isFriends ? <div>Friends</div> : <button className="btn--create" onClick={handleClickAddFriend}>Add</button>}
+            {user.isFriends ? <div className="user__status">Friends</div> : <button className="btn--create" onClick={handleClickAddFriend}>Add</button>}
         </div>
     )
 }
