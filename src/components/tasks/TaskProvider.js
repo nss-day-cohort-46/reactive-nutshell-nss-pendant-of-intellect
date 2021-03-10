@@ -1,3 +1,10 @@
+/*
+INFO
+Auther:Stacey Littrell
+Purpose of Module:Provider that is responable for getting, updating anf deleting data in the database. 
+Uses Context to send data to the appropriate modules.
+*/
+
 import React, { createContext, useState } from 'react';
 
 export const TaskContext = createContext()
@@ -20,6 +27,27 @@ export const TaskProvider = (props) => {
         })
         .then(getTasks)
     }
+    const getTaskById = (id) => {
+      return fetch(`http://localhost:8088/tasks/${id}`)
+      .then(res => res.json())
+  }
+
+    const removeTask = taskId => {
+        return fetch(`http://localhost:8088/tasks/${taskId}`, {
+            method: "DELETE"
+        })
+            .then(getTasks)
+    }
+    const modifyTask = newTask => {
+        return fetch(`http://localhost:8088/tasks/${newTask.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newTask)
+        })
+          .then(getTasks)
+      }
 
     const updateTasks = (taskId, checked) => {
         return fetch(`http://localhost:8088/tasks/${taskId}`, {
@@ -34,7 +62,7 @@ export const TaskProvider = (props) => {
 
     return (
         <TaskContext.Provider value={{
-            tasks, getTasks, addTask, updateTasks
+            tasks, getTasks, addTask, updateTasks, removeTask, modifyTask, getTaskById
         }}>
             {props.children}
         </TaskContext.Provider>

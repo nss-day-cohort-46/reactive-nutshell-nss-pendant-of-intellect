@@ -1,3 +1,8 @@
+/*
+INFO
+Auther:Stacey Littrell
+Purpose of Module: Render a List of tasks that belong to the current user 
+*/
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router";
 import { TaskCard } from "./Task";
