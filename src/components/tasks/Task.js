@@ -1,3 +1,8 @@
+/*
+INFO
+Auther:Stacey Littrell
+Purpose of Module: jsx for task rendering,checking task as complete, and deleting task
+*/
 import { React, useState, useContext } from "react";
 import { useHistory } from "react-router";
 import { TaskContext } from "./TaskProvider";

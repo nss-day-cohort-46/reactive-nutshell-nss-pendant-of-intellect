@@ -1,3 +1,10 @@
+/*
+INFO
+Auther:Stacey Littrell
+Purpose of Module:Provider that is responable for getting, updating anf deleting data in the database. 
+Uses Context to send data to the appropriate modules.
+*/
+
 import React, { createContext, useState } from 'react';
 
 export const TaskContext = createContext()
