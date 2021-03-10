@@ -1,13 +1,13 @@
 /*
 INFO
 Auther:Stacey Littrell
-Purpose of Module: jsx for task rendering,checking task as complete, and deleting task
+Purpose of Module: jsx for completed task rendering, unchecking task renders it back to checklist, and deleting task
 */
 import { React, useState, useContext } from "react";
 import { useHistory } from "react-router";
 import { TaskContext } from "./TaskProvider";
 
-export const TaskCard = ({taskObj}) => {
+export const CompletedTaskCard = ({taskObj}) => {
     const {updateTasks, removeTask} = useContext(TaskContext)
     const history = useHistory()
     const [task, setTask] = useState({
@@ -32,18 +32,20 @@ export const TaskCard = ({taskObj}) => {
             const checked = newTask
             updateTasks(taskId, checked)
         }
+        history.push("/tasks")
     }
     
-    if(taskObj.complete === true){
+    if(taskObj.complete === false){
         return (<></>)
     }
     else {
     
         return(
             <>
+                
                 <div>Complete by: {taskObj.completedByDate}</div>
                 <section>
-                    <input type= "checkbox" id="complete" onClick={handleChange}></input>
+                    <input type= "checkbox" id="complete" defaultChecked onClick={handleChange}></input>
                     <label forhtml={taskObj.id} className="task__name">
                     <div>{taskObj.name}</div>
                     </label>
