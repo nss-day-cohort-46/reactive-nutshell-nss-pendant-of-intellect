@@ -1,5 +1,6 @@
 .userSearch {
     flex: 0 1 20%;
+    background-color: rgb(239,239,239);
 }
 
 .user__status {
@@ -8,5 +9,10 @@
 
 .user {
     margin: .5em 0 2.5em 0;
-    border: 1px solid green;
+    background-color: rgb(201,218,247);
+    padding: .25em;
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
