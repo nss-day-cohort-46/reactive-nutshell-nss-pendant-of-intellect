@@ -5,12 +5,15 @@
  **/
 import React, { useContext } from "react"
 import { FriendsContext } from "./FriendsProvider"
+import { UsersContext } from "../users/UsersProvider"
 import "./Friends.css"
 
 export const FriendCard = ({ friend }) => {
     const { removeFriend } = useContext(FriendsContext)
+    const { getUsers } =useContext(UsersContext)
     const handleClickRemoveFriend = () => {
         removeFriend(friend.id)
+        .then(getUsers)
     }
     return (
         <div className="friend">
