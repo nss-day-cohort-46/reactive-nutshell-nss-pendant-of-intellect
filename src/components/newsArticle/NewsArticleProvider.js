@@ -1,3 +1,5 @@
+// Kaitlin
+// gets data fom API
 import React, { createContext, useState } from "react"
 
 export const NewsArticleContext = createContext()
@@ -10,6 +12,7 @@ export const NewsArticleProvider = (props) => {
         return fetch("http://localhost:8088/articles?_expand=user")
         .then(res => res.json())
         .then(setNewsArticles)
+        .then(() => console.log("articles in provider",newsArticles))
     }
 
     const addNewsArticle = (articleObj) => {
