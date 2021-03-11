@@ -7,7 +7,8 @@
 import React, { useContext, useEffect } from "react"
 import { FriendsContext } from "./FriendsProvider"
 import { FriendCard } from "./FriendCard"
-// import "./Friend.css"
+import { UserList } from "../users/UserList"
+import "./Friends.css"
 
 export const FriendList = () => {
 
@@ -18,9 +19,14 @@ export const FriendList = () => {
     }, [])
 
     return (
-        <>
-            <h1>My Friends: </h1>
-            {filteredFriends.map(friend => <FriendCard key={friend.id} friend={friend} />)}
-        </>
+        <div className="friendList">
+            <UserList />
+            <section className="friends">
+                <h1>My Friends: </h1>
+                <div className="friends__container">
+                    {filteredFriends.map(friend => <FriendCard key={friend.id} friend={friend} />)}
+                </div>
+            </section>
+        </div>
     )
 }

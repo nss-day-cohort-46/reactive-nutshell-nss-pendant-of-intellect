@@ -1,7 +1,7 @@
 /*
 INFO
 Auther:Stacey Littrell
-Purpose of Module: jsx for task rendering,checking task as complete, and deleting task
+Purpose of Module: jsx for completed task rendering, unchecking task renders it back to checklist, and deleting task
 */
 import { React, useState, useContext } from "react";
 import { useHistory } from "react-router";
