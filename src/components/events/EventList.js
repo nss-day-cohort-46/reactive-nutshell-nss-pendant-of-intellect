@@ -51,10 +51,10 @@ export const EventList = () => {
                 sortedEvents.map(event => {
                     const upNext = sortedEvents.filter(event => {
                         const rightNow = Date.now()
-                        return new Date(event.date).valueOf() > rightNow
+                        return new Date(event.date).valueOf() + 86400000 > rightNow
                     })[0]
-                    const special = event === upNext
-                    if (event.author) return <EventCard key={event.id} event={event} special={special}/>
+                    const isUpNext = event === upNext
+                    if (event.author) return <EventCard key={event.id} event={event} isUpNext={isUpNext}/>
                 })
             }
         </section>
