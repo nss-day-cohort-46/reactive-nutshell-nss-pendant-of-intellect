@@ -22,11 +22,12 @@ export const MessageList = () => {
             .then(getMessages)
     }, [])
 
-    // added
+    // expected useEffect to run the timer after inital render, then to run
+    // return  function fro cleanup after leaving the page. 
     useEffect(() => {
         const timer = setInterval(() => {getMessages()}, 5000)
         return clearInterval(timer)
-    })
+    }, [])
 
     const handleChange = text => {
         setNewText(text)
