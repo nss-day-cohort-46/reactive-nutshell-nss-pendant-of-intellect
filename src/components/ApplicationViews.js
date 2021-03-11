@@ -87,7 +87,11 @@ export const ApplicationViews = () => {
                 <WeatherModal />
                 <EventList />
               </Route>
-              <Route path="/events/create">
+              <Route exact path="/events/create">
+                <EventForm />
+                <EventList />
+              </Route>
+              <Route path="/events/edit/:eventId(\d+)">
                 <EventForm />
                 <EventList />
               </Route>
