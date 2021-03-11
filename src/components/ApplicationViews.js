@@ -48,6 +48,9 @@ export const ApplicationViews = () => {
                 <Route path="/NewsArticleForm">
                   <NewsArticleForm />
                 </Route>
+                <Route exact path="/articles/edit/:articleId">
+                  <NewsArticleForm />
+                </Route>
               </NewsArticleProvider>
             </UsersProvider>
           </FriendsProvider>

@@ -1,29 +1,35 @@
 // Kaitlin
 // Build HTML for each article
 import React, { useContext } from "react"
-import { NewsArticleContext} from "./NewsArticleProvider"
+import { NewsArticleContext } from "./NewsArticleProvider"
+import "./NewsArticleCard.css"
+import { useHistory } from "react-router"
 
+export const NewsArticleCard = ({ article, currentUserId }) => {
 
-export const NewsArticleCard = ({article}) => {
-    const {deleteNewsArticle} = useContext(NewsArticleContext)
+    const { deleteNewsArticle } = useContext(NewsArticleContext)
+    const history = useHistory()
 
-    const handleDeleteClick = (event) => {
-        deleteNewsArticle(article.id)
-    }
+    const handleDeleteClick = () => deleteNewsArticle(article.id)
     
     return (
-        <section>
-            <h2>{article.title}</h2>
+        <section className={parseInt(currentUserId) === article.userId ? "currentUser" : "friendArticle"}>
+            <h2 className="article__header">{article.title}</h2>
             <div className="article__info">
-                <p>{article.user.name}</p>
-                <p>{new Date(article.timestamp).toLocaleString()}</p>
+                <p className="article__userInfo">Posted By {article.user.name} on {new Date(article.timestamp).toLocaleString().split(',')[0]}</p>
             </div>
-            <p>{article.synopsis}</p>
-            
-           {parseInt(sessionStorage.getItem("nutshell_user")) === article.userId ? 
-           
-          <button className="btn--delete" onClick={event=> handleDeleteClick(event)}>Delete</button>: ""}
-            
+            <p className="article__synopsis">Synopsis: {article.synopsis}</p>
+
+            <button className="btn--readMore"><a href={article.url} target="_blank">Read Full Article</a></button>
+            {parseInt(sessionStorage.getItem("nutshell_user")) === article.userId ?
+                <div>
+                    <button className="btn--delete deleteArticle" onClick={() => handleDeleteClick()}>Delete</button>
+                    <button className="btn--edit editArticle" onClick={() => history.push(`/articles/edit/${article.id}`)}>Edit</button>
+                </div>
+                : ""}
+
+
         </section>
     )
 }
+
