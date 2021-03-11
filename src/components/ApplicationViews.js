@@ -38,21 +38,21 @@ export const ApplicationViews = () => {
         </FriendsProvider>
       </UsersProvider>
 
-      <FriendsProvider>
-        <UsersProvider>
-          <NewsArticleProvider>
-            <Route exact path="/">
-              <NewsArticleList />
-            </Route>
-            <Route path="/NewsArticleForm">
-              <NewsArticleForm />
-            </Route>
-            <Route exact path="/articles/edit/:articleId">
-              <NewsArticleForm />
-            </Route>
-          </NewsArticleProvider>
-        </UsersProvider>
-      </FriendsProvider>
+          <FriendsProvider>
+            <UsersProvider>
+              <NewsArticleProvider>
+                <Route exact path="/">
+                  <NewsArticleList />
+                </Route>
+                <Route path="/NewsArticleForm">
+                  <NewsArticleForm />
+                </Route>
+                <Route exact path="/articles/edit/:articleId">
+                  <NewsArticleForm />
+                </Route>
+              </NewsArticleProvider>
+            </UsersProvider>
+          </FriendsProvider>
 
 
       <UsersProvider>
