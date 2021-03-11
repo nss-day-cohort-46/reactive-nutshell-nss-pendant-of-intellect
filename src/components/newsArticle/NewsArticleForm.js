@@ -22,37 +22,51 @@ export const NewsArticleForm = () => {
 
     const handleChangeInput = event => {
         const newArticle = {...article}
-        // debugger
-        newArticle[event.target.id] = event.target.value
-        newArticle.userId = parseInt(sessionStorage.getItem("nutshell_user"))
-        newArticle.timestamp = Date.now()
-        setArticle(newArticle)
+        if(articleId) {
+            newArticle[event.target.id] = event.target.value
+            newArticle.userId = parseInt(sessionStorage.getItem("nutshell_user"))
+            setArticle(newArticle)
+        } else {
+
+            newArticle[event.target.id] = event.target.value
+            newArticle.userId = parseInt(sessionStorage.getItem("nutshell_user"))
+            newArticle.timestamp = Date.now()
+            setArticle(newArticle)
+        }
     }
 
     const handleSaveClick = () => {
-        if (article.title !== "" && article.synopsis !== "" && article.url !== "") {
-            // addNewsArticle(article)
-            history.push(`/`)
-        } else {
-            window.alert("Please complete all fields")
-        }
-        // if () {}
+        if (article.title === "" && article.synopsis === "" && article.url === "") {
+            window.alert("Please complete all fields")    
+        } else{
+        if(articleId){
+            updateNewsArticle({
+                title: article.title,
+                synopsis: article.synopsis,
+                url: article.url,
+                timestamp: article.timestamp,
+                userId: article.userId,
+                id: article.id
+            })
+            .then(() => history.push("/"))
+           }
+           else{
+           addNewsArticle(article)
+           .then(() => history.push("/"))
+        }}
     }
 
     useEffect(() => {
-        // getNewsArticles()
-        // .then(() => {
             if(articleId) {
             getNewsArticleById(articleId)
             .then(articleObj => setArticle(articleObj))    
         }
-    // })
     }, [])
-    // debugger
+    
     return (
 
         <form>
-            <h1>New Article</h1>
+            <h1>{articleId ? "Edit Article" : "New Article"}</h1>
             <fieldset>
             <label htmlFor="article--title">Article Title</label>
             {console.log(article)}
@@ -72,7 +86,7 @@ export const NewsArticleForm = () => {
             <button className="btn--saveArticle" onClick={event => {
             event.preventDefault()
             handleSaveClick()
-            }}>Add Article</button>
+            }}>{articleId ? "Save Article" : "Add Article"}</button>
 
         </form>
     )

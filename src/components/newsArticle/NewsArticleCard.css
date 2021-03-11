@@ -1,10 +1,10 @@
-section {
+.currentUser, .friendArticle {
     border: solid black thin;
     margin: 5%;
     padding: 1%;
 }
 
-.btn--delete, .btn--edit {
+.deleteArticle, .editArticle {
 
  float: right;
  transform: translateY(-100%)
@@ -17,7 +17,7 @@ section {
     margin-right: auto;
 }
 
-h2 {
+.article__header {
     text-align: center;
     font-weight: bolder;
 }
@@ -29,7 +29,7 @@ h2 {
     font-size: 14px;
 }
 
-p {
+.article__synopsis, .article__userInfo {
     font-weight: bold;
 }
 
@@ -37,7 +37,7 @@ p {
     background-color: whitesmoke;
 }
 
-.friend {
+.friendArticle {
     font-style: italic;
     background-color: cornsilk;
 }

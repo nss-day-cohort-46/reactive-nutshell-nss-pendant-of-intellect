@@ -33,7 +33,7 @@ export const NewsArticleProvider = (props) => {
     }
 
     const updateNewsArticle = articleObj => {
-        return fetch(`http://localhost:8088/tasks/${articleObj.id}`, {
+        return fetch(`http://localhost:8088/articles/${articleObj.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
