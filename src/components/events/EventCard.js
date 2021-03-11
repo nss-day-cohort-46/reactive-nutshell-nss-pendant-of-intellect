@@ -18,6 +18,7 @@ export const EventCard = ({ event, isUpNext }) => {
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
     let author = "Created by me"
     let articleClass = "event"
+    let showWeatherButton = ""
     
     
     // determine if event is not a user's own event, add styling

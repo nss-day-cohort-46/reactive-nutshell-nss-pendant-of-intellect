@@ -55,13 +55,10 @@ export const EventList = () => {
                         const rightNow = Date.now()
                         return new Date(event.date).valueOf() + 86400000 > rightNow
                     })[0]
-<<<<<<< HEAD
+
                     const isUpNext = event === upNext
                     if (event.author) return <EventCard key={event.id} event={event} isUpNext={isUpNext}/>
-=======
-                    const isNext = event === upNext
-                    return <EventCard key={event.id} event={event} isNext={isNext}/>
->>>>>>> main
+
                 })
             }
         </section>
