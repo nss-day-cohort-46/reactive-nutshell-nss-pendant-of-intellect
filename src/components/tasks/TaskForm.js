@@ -89,9 +89,9 @@ export const TaskForm = () => {
                 disabled={isLoading}
                 onClick={event => { event.preventDefault() 
                     saveTask()}}>
-                {taskId ? "Update Task" : "Add New Task"}
+                {taskId ? "Update Task" : "Save New Task"}
             </button>
-            <button className="taskbtn btn-closeNewTask" onClick={() => history.push("/tasks")}>Back to Tasks</button>
+            <button className="taskbtn btn-closeNewTask" onClick={() => history.push("/tasks")}>Tasks</button>
             </form>
         </>
     )
