@@ -41,10 +41,8 @@ export const WeatherModal = () => {
                 <h4>{weatherEvent.name}</h4>
                 <p>{weatherEvent.date} - {weatherEvent.city}, {weatherEvent.state}</p>
                 <strong>FORECAST:</strong>
-                <p className="date">{eventWeather.date}</p>
                 <p className="weather__forecast">{eventWeather.forecast}</p>
-                <p className="weather__high">High: {eventWeather.high} ⁰F</p>
-                <p className="weather__low">Low: {eventWeather.low} ⁰F</p>
+                <p className="weather__high">Temp: {eventWeather.high} ⁰F</p>
                 <button className="button closeWeatherButton" onClick={handleClickCloseButton}>Close</button>
             </section>
         )
