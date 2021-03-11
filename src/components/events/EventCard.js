@@ -11,13 +11,16 @@ export const EventCard = ({ event, isUpNext }) => {
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
     let author = "Created by me"
     let articleClass = "event"
+    // determine if event is not a user's own event, add styling
     if (event.author.id !== currentUserId) {
         author = `Created by ${event.author.name}`
-    }
-    if (isUpNext) {
-        articleClass += " next"
+        articleClass = "event friendEvent"
     }
 
+    // add 'next' styling to event
+    if (isUpNext) {
+        articleClass = "event next"
+    }
 
     
 

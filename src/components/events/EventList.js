@@ -46,7 +46,7 @@ export const EventList = () => {
 
     return (
         <section className="events">
-            <button onClick={() => history.push(`/events/create`)} id="addEventButton" className="button btn-create">Add an Event</button>
+            <button onClick={() => history.push(`/events/create`)} id="addEventButton" className="button btn--create">Add an Event</button>
             {
                 sortedEvents.map(event => {
                     const upNext = sortedEvents.filter(event => {
