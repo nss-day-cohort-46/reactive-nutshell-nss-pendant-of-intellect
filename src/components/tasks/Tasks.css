@@ -1,3 +1,63 @@
-form {
-    border: solid thin;
+.task_form {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(124, 214, 241);
+}
+.task__date {
+    width: 25%;
+    margin: 10px;
+}
+.task__name{
+    width: 50%;
+}
+.btn-saveTask,  .btn-closeNewTask{
+    width: max-content;
+}
+
+.taskHeader {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: underline;
+}
+.taskbtn {
+    border-radius: 5px;
+    margin: 5px;
+}
+.taskbtn__contanier {
+    align-items: center;
+}
+
+.taskCard {
+    display:flex;
+    border: solid;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    width: 45%;
+    margin: 15px;
+    padding: 5px;
+    background-color: rgb(178, 236, 238);
+}
+.btn-removeTask, .btn-editTask{
+    float:right;
+    border-radius: 5px;
+    margin: 2px;
+}
+.task__name {
+    margin-left: 5px;
+}
+
+.task__dateComplete {
+    font-weight: bold;
+}
+.taskCardComplete {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: solid;
+    border-radius: 15px;
+    width: 50%;
+    margin: 15px;
+    padding: 5px;
+    background-color: rgb(120, 202, 157);
 }

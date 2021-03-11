@@ -1,7 +1,9 @@
 // Created by Alex Martin
 
 // called when a user clicks on "Events" in the NavBar, this module gets all events, filters them down to only events
-// the user should see, then sorts them chronologically by event date. That's then mapped out into Event Cards.
+// the user should see, then sorts them chronologically by event date. 
+// That's then mapped out into Event Cards.
+// the upNext variable determines the next chronological event 
 
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
@@ -53,8 +55,13 @@ export const EventList = () => {
                         const rightNow = Date.now()
                         return new Date(event.date).valueOf() + 86400000 > rightNow
                     })[0]
+<<<<<<< HEAD
                     const isUpNext = event === upNext
                     if (event.author) return <EventCard key={event.id} event={event} isUpNext={isUpNext}/>
+=======
+                    const isNext = event === upNext
+                    return <EventCard key={event.id} event={event} isNext={isNext}/>
+>>>>>>> main
                 })
             }
         </section>

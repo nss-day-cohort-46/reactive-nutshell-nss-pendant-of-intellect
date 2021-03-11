@@ -8,6 +8,7 @@ import { useHistory, useParams } from "react-router";
 import { TaskCard } from "./Task";
 import { TaskContext } from "./TaskProvider";
 import { CompletedTaskCard } from "./TasksComplete"
+import "./Tasks.css"
 
 export const TaskList = () => {
     const {tasks, getTasks} = useContext(TaskContext)
@@ -31,13 +32,13 @@ export const TaskList = () => {
     if(complete){
         return (
             <>   
-                <h3>My Completed Tasks </h3> 
-                <p>Uncheck task to move it back into your task checklist</p>    
+                <h3 className="taskHeader">My Completed Tasks </h3> 
+                <h5 className="taskHeader">Uncheck task to move it back into your task checklist</h5>    
                 <div className="tasks complete">
                     {
                         completedTasks.map(task => <CompletedTaskCard key={task.id} taskObj={task} />)
                     }
-                    <button onClick={() => history.push("/tasks")}>Tasks</button>
+                    <button className="taskbtn" onClick={() => history.push("/tasks")}>Tasks</button>
                 </div>
             </>
         )
@@ -45,13 +46,15 @@ export const TaskList = () => {
     else {
         return (
             <>
-                <h3>My Task Checklist </h3>        
+                <h3 className="taskHeader">My Task Checklist </h3> 
+                    <div className="taskbtn__contanier">      
+                        <button className="taskbtn btn-addTask" onClick={() => history.push("/tasks/create")}>Add New Task</button>
+                        <button className="taskbtn btn-seeCompleteTask" onClick={() => history.push("/tasks/view/complete")}>Completed task list</button>
+                    </div> 
                 <div className="tasks">
                     {
                         userTasks.map(task => <TaskCard key={task.id} taskObj={task} />)
                     }
-                    <button onClick={() => history.push("/tasks/create")}>Add New Task</button>
-                    <button onClick={() => history.push("/tasks/view/complete")}>Completed task list</button>
                 </div>
             </>
         )
