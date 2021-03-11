@@ -15,6 +15,8 @@ import { TaskForm } from "./tasks/TaskForm"
 import { EventProvider } from "./events/EventProvider"
 import { EventList } from "./events/EventList"
 import { EventForm } from "./events/EventForm"
+import { WeatherProvider } from "./events/weather/WeatherProvider"
+import { WeatherModal } from "./events/weather/WeatherModal"
 
 export const ApplicationViews = () => {
   return (
@@ -30,7 +32,7 @@ export const ApplicationViews = () => {
             <FriendList />
           </Route>
 
-          <Route exact path = "/friends/add/:userId(\d+)">
+          <Route exact path="/friends/add/:userId(\d+)">
             <FriendConfirm />
           </Route>
         </FriendsProvider>
@@ -81,15 +83,18 @@ export const ApplicationViews = () => {
 
       <EventProvider>
 
-        <Route exact path="/events">
-          <EventList />
-        </Route>
+        <WeatherProvider>
+          <Route exact path="/events">
+            <WeatherModal />
+            <EventList />
+          </Route>
+          <Route path="/events/create">
+            <EventForm />
+            <EventList />
+          </Route>
+        </WeatherProvider>
 
-        <Route path="/events/create">
-          <EventForm />
-          <EventList />
-        </Route>
-        
+
       </EventProvider>
     </>
   )
