@@ -18,7 +18,7 @@ export const WeatherModal = () => {
         if (weather.length) {
             // find a relevant forecast for the date of the event
             const weatherObj = weather.find(w => {
-                return w.dt_txt === `${weatherEvent.date} 12:00:00`
+                return w.dt_txt === `${weatherEvent.date} 21:00:00`
             })
             if (weatherObj) {
                 setEventWeather({
