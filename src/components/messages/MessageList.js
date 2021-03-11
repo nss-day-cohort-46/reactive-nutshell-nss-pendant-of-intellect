@@ -24,7 +24,7 @@ export const MessageList = () => {
 
 // this useEffect added by dan to demo liveChat
     useEffect(() => {
-        const timer = setInterval(() => {getMessages()}, 5000)
+        const timer = setInterval(getMessages, 5000)
         return () => {clearInterval(timer)}
     }, [])
 
