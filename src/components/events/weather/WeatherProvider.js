@@ -11,6 +11,7 @@ export const WeatherProvider = props => {
     const [weather, setWeather] = useState({})
 
     const getWeather = (city, stateCode) => {
+
         return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city},${stateCode}us&units=imperial&appid=${Settings.WeatherAPI}`)
             .then(res => res.json())
             .then(pRes => setWeather(pRes.list))

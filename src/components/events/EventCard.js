@@ -40,6 +40,7 @@ export const EventCard = ({ event, isUpNext }) => {
     }
 
     const handleClickWeatherButton = () => {
+        // debugger
         getWeather(event.city, event.state)
         // toggle the modal render to something rather than nothing (false)
         setShowWeather(true)

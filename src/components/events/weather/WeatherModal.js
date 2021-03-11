@@ -17,10 +17,16 @@ export const WeatherModal = () => {
     useEffect(() => {
         if (weather.length) {
             // find a relevant forecast for the date of the event
-            const weatherObj = weather.find(w => {
-                return w.dt_txt === `${weatherEvent.date} 21:00:00`
-            })
+            let weatherObj
+            if (weatherEvent.currentWeather) {
+                weatherObj = weather[0]
+            } else {
+                weatherObj = weather.find(w => {
+                    return w.dt_txt === `${weatherEvent.date} 21:00:00`
+                })
+            }
             if (weatherObj) {
+                console.log("This use effect was triggered")
                 setEventWeather({
                     date: weatherObj.dt_txt,
                     forecast: weatherObj?.weather[0].description,

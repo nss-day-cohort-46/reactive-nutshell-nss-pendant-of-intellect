@@ -48,10 +48,21 @@ export const EventList = () => {
         setSortedEvents(eventsWithAuthors)
     }, [events, friends, users])
 
+    // added by Dan to show currentWeather
     const handleMyWeatherButton = () => {
         getWeather("Nashville", "TN")
         setShowWeather(true)
-        // setWeatherEvent(event)
+
+        let today = new Date()
+        let dateString = `${today.getUTCFullYear()}-${today.getMonth()}-${today.getUTCDate()}`        
+        const userWeatherObj = {
+            name: "Your weather",
+            date: dateString,
+            city: "Nashville",
+            state: "TN",
+            currentWeather: true
+        }
+        setWeatherEvent(userWeatherObj)
 
     }
 
