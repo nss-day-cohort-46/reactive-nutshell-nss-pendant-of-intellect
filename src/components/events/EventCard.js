@@ -11,11 +11,29 @@ import './EventCard.css'
 import { EventContext } from './EventProvider'
 import { WeatherContext } from './weather/WeatherProvider'
 
-export const EventCard = ({ event, isNext }) => {
+
+export const EventCard = ({ event, isUpNext }) => {
     const { deleteEvent, setShowWeather, setWeatherEvent } = useContext(EventContext)
     const { getWeather } = useContext(WeatherContext)
+    const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
+    let author = "Created by me"
+    let articleClass = "event"
+    let showWeatherButton = ""
     
-    let showWeatherButton = <p className="noWeather">Weather not available</p>
+    
+    // determine if event is not a user's own event, add styling
+    if (event.author.id !== currentUserId) {
+        author = `Created by ${event.author.name}`
+        articleClass = "event friendEvent"
+    }
+
+    // add 'next' styling to event
+    if (isUpNext) {
+        articleClass = "event next"
+    }
+
+
+
 
     const handleClickDeleteButton = () => {
         deleteEvent(event.id)
@@ -40,10 +58,11 @@ export const EventCard = ({ event, isNext }) => {
     }
 
     return (
-        <article className={isNext ? "event next" : "event"}>
+        <article className={articleClass}>
             <h2 className="event__name">{event.name}</h2>
             <p className="event__date">{event.date}</p>
             <p className="event__location">{event.city}, {event.state}</p>
+            <h5 className="event__author">{author}</h5>
             {showWeatherButton}
             <button className="event__deleteButton button btn--delete"
                 onClick={handleClickDeleteButton}>Delete Event</button>

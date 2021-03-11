@@ -1,6 +1,10 @@
 .event {
     display: flex;
     flex-direction: column;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .event > button, .noWeather {
@@ -8,10 +12,15 @@
 }
 
 .next {
-    background-color: wheat;
+    background-color: lightblue;
     font-weight: bold;
 }
 
+.friendEvent {
+    background-color: cornsilk;
+    font-style: italic;
+
+}
 .next > h2 {
     font-weight: bold;
 }

@@ -53,19 +53,19 @@ export const EventForm = () => {
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="date">Event date:</label>
-                        <input type="date" id="date" onChange={handleControlledInputChange} className="form-control" placeholder="Event Name" value={event.date} required />
+                        <input type="date" id="date" onChange={handleControlledInputChange} className="form-control" value={event.date} required />
                     </div>
                 </fieldset>
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="city">City:</label>
-                        <input type="text" id="city" onChange={handleControlledInputChange} className="form-control" placeholder="Event Name" value={event.city} required />
+                        <input type="text" id="city" onChange={handleControlledInputChange} className="form-control" placeholder="City" value={event.city} required />
                     </div>
                 </fieldset>
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="state">State:</label>
-                        <input type="text" id="state" onChange={handleControlledInputChange} className="form-control" placeholder="Event Name" value={event.state} required />
+                        <input type="text" id="state" onChange={handleControlledInputChange} className="form-control" placeholder="State Code" value={event.state} required />
                     </div>
                 </fieldset>
                 <button className="button btn-create"

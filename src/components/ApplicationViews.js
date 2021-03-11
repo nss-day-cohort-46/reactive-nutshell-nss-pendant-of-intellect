@@ -38,9 +38,6 @@ export const ApplicationViews = () => {
         </FriendsProvider>
       </UsersProvider>
 
-      <Route path="/messages">
-        {/* Render the component for the messages */}
-          </Route>
           <FriendsProvider>
             <UsersProvider>
               <NewsArticleProvider>
@@ -56,6 +53,7 @@ export const ApplicationViews = () => {
               </NewsArticleProvider>
             </UsersProvider>
           </FriendsProvider>
+
 
       <UsersProvider>
         <MessageProvider>
@@ -82,19 +80,20 @@ export const ApplicationViews = () => {
       </TaskProvider>
 
       <EventProvider>
-
-        <WeatherProvider>
-          <Route exact path="/events">
-            <WeatherModal />
-            <EventList />
-          </Route>
-          <Route path="/events/create">
-            <EventForm />
-            <EventList />
-          </Route>
-        </WeatherProvider>
-
-
+        <FriendsProvider>
+          <UsersProvider>
+            <WeatherProvider>
+              <Route exact path="/events">
+                <WeatherModal />
+                <EventList />
+              </Route>
+              <Route path="/events/create">
+                <EventForm />
+                <EventList />
+              </Route>
+            </WeatherProvider>
+          </UsersProvider>
+        </FriendsProvider>
       </EventProvider>
     </>
   )
