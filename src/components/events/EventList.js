@@ -54,7 +54,7 @@ export const EventList = () => {
                         return new Date(event.date).valueOf() > rightNow
                     })[0]
                     const special = event === upNext
-                    return <EventCard key={event.id} event={event} special={special}/>
+                    if (event.author) return <EventCard key={event.id} event={event} special={special}/>
                 })
             }
         </section>
