@@ -17,7 +17,7 @@ export const MessageCard = ({ message, user, currentUser }) => {
         {
             userId: 0,
             text: "",
-            timestamp: 0,
+            originalTimestamp: 0,
             editTimestamp: 0
         }
     )
@@ -76,7 +76,7 @@ export const MessageCard = ({ message, user, currentUser }) => {
                 : message.text}</div>
             <div className="message__info">
                 <p className="message__info--timestamp">{message.editTimestamp > 0 ? `(edited)${new Date(message.editTimestamp).toLocaleString('en-US')}` 
-                : new Date(message.timestamp).toLocaleString('en-US')}</p>
+                : new Date(message.originalTimestamp).toLocaleString('en-US')}</p>
             </div>
             {userButtons}
         </article>
