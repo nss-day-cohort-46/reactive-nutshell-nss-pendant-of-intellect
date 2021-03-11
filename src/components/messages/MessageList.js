@@ -22,7 +22,11 @@ export const MessageList = () => {
             .then(getMessages)
     }, [])
 
-// attempted use of setInterval here, always resulted in infinite loop
+// added
+useEffect(() => {
+    const timer = setInterval(() => {getMessages()}, 5000)
+    return clearInterval(timer)
+}, [])
 
     const handleChange = text => {
         setNewText(text)
