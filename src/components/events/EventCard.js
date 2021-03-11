@@ -33,7 +33,7 @@ export const EventCard = ({ event, isNext }) => {
     if (new Date(event.date).getTime() - new Date().getTime() < 86400000 * 5
         &&
         // Determine if event has already happened (no weather button)
-        new Date(event.date).getTime() - new Date().getTime() > 0) {
+        new Date().getTime() - new Date(event.date).getTime() < 86400000) {
         showWeatherButton =
             <button className="event__weatherButton button"
                 onClick={handleClickWeatherButton}>Show Weather</button>
