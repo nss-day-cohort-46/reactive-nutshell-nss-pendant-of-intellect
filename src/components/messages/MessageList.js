@@ -30,7 +30,8 @@ export const MessageList = () => {
         const newMessage = {
             userId: currentUserId,
             text: newText,
-            timestamp: Date.now()
+            timestamp: Date.now(),
+            editTimestamp: 0
         }
         addMessage(newMessage)
         setNewText("")
