@@ -5,7 +5,7 @@ the current user against the userId of a message, handling the new message form,
 */
 
 
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, componentWillUnmount } from 'react'
 import { MessageCard } from './MessageCard'
 import { MessageContext } from './MessageProvider'
 import './MessageList.css'
@@ -20,6 +20,12 @@ export const MessageList = () => {
     useEffect(() => {
         getUsers()
             .then(getMessages)
+    }, [])
+
+// this useEffect added by dan to demo liveChat
+    useEffect(() => {
+        const timer = setInterval(getMessages, 5000)
+        return () => {clearInterval(timer)}
     }, [])
 
     const handleChange = text => {
