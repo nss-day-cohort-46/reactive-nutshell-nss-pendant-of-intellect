@@ -30,7 +30,7 @@ export const ApplicationViews = () => {
             <FriendList />
           </Route>
 
-          <Route exact path = "/friends/add/:userId(\d+)">
+          <Route exact path="/friends/add/:userId(\d+)">
             <FriendConfirm />
           </Route>
         </FriendsProvider>
@@ -38,19 +38,19 @@ export const ApplicationViews = () => {
 
       <Route path="/messages">
         {/* Render the component for the messages */}
-          </Route>
-          <FriendsProvider>
-            <UsersProvider>
-              <NewsArticleProvider>
-                <Route exact path="/">
-                  <NewsArticleList />
-                </Route>
-                <Route path="/NewsArticleForm">
-                  <NewsArticleForm />
-                </Route>
-              </NewsArticleProvider>
-            </UsersProvider>
-          </FriendsProvider>
+      </Route>
+      <FriendsProvider>
+        <UsersProvider>
+          <NewsArticleProvider>
+            <Route exact path="/">
+              <NewsArticleList />
+            </Route>
+            <Route path="/NewsArticleForm">
+              <NewsArticleForm />
+            </Route>
+          </NewsArticleProvider>
+        </UsersProvider>
+      </FriendsProvider>
 
       <UsersProvider>
         <MessageProvider>
@@ -77,16 +77,18 @@ export const ApplicationViews = () => {
       </TaskProvider>
 
       <EventProvider>
+        <FriendsProvider>
+          <UsersProvider>
+            <Route exact path="/events">
+              <EventList />
+            </Route>
 
-        <Route exact path="/events">
-          <EventList />
-        </Route>
-
-        <Route path="/events/create">
-          <EventForm />
-          <EventList />
-        </Route>
-        
+            <Route path="/events/create">
+              <EventForm />
+              <EventList />
+            </Route>
+          </UsersProvider>
+        </FriendsProvider>
       </EventProvider>
     </>
   )
