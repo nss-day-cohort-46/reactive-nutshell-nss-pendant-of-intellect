@@ -15,6 +15,11 @@ export const MessageProvider = props => {
             .then(setMessages)
     }
 
+    const getMessageById = messageId => {
+        return fetch(`http://localhost:8088/messages/${messageId}`)
+            .then(res => res.json())
+    }
+
     const addMessage = message => {
         return fetch(`http://localhost:8088/messages`, {
             method: "POST",
@@ -46,7 +51,7 @@ export const MessageProvider = props => {
 
     return (
         <MessageContext.Provider value={{
-            messages, getMessages, addMessage, editMessage, deleteMessage
+            messages, getMessages, addMessage, editMessage, deleteMessage, getMessageById
         }}>
             {props.children}
         </MessageContext.Provider>
