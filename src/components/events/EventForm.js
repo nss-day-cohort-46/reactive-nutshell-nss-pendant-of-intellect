@@ -4,12 +4,14 @@
 // info from the user about the new event, and saving the new event
 
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import { EventContext } from './EventProvider'
 
 export const EventForm = () => {
-    const { events, addEvent } = useContext(EventContext)
+    const { events, addEvent, getEventById, editEvent } = useContext(EventContext)
     const history = useHistory()
+    const { eventId } = useParams()
+    const [isLoading, setIsLoading] = useState(true)
 
     const [event, setEvent] = useState({
         userId: parseInt(sessionStorage.getItem("nutshell_user")),
@@ -19,7 +21,6 @@ export const EventForm = () => {
         state: ""
     })
 
-    const [isLoading, setIsLoading] = useState(true)
 
     const handleControlledInputChange = e => {
         const newEvent = { ...event }
@@ -31,19 +32,27 @@ export const EventForm = () => {
     const handleClickSaveEvent = e => {
         e.preventDefault()
         setIsLoading(true)
-        addEvent(event)
+        if (eventId) {
+            editEvent(event)
+        } else {
+            addEvent(event)
+        }
         history.push('/events')
     }
 
     useEffect(() => {
+        if (eventId) {
+            getEventById(eventId)
+                .then(setEvent)
+        }
         setIsLoading(false)
     }, [events])
 
     return (
         <>
-        {/* We've changed the button in this form to "submit" the form rather than call the save function directly. */}
+            {/* We've changed the button in this form to "submit" the form rather than call the save function directly. */}
             <form className="eventForm" onSubmit={handleClickSaveEvent}>
-                <h2 className="eventForm__title">Add New Event</h2>
+                <h2 className="eventForm__title">{eventId ? "Edit" : "Add"} Event</h2>
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="name">Event name:</label>
@@ -71,7 +80,7 @@ export const EventForm = () => {
                 <button className="button btn-create"
                     type="submit"
                     disabled={isLoading}>
-                    Save Event
+                    {eventId ? "Save Edits" : "Save Event"}
                 </button>
             </form>
         </>
