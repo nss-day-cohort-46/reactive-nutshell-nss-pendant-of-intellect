@@ -12,11 +12,13 @@ import { EventContext } from './EventProvider'
 import './EventList.css'
 import { FriendsContext } from '../friends/FriendsProvider'
 import { UsersContext } from '../users/UsersProvider'
+import { WeatherContext } from './weather/WeatherProvider'
 
 export const EventList = () => {
-    const { events, getEvents } = useContext(EventContext)
+    const { events, getEvents, setShowWeather, setWeatherEvent } = useContext(EventContext)
     const { friends, getFriends } = useContext(FriendsContext)
     const { users, getUsers } = useContext(UsersContext)
+    const { getWeather } = useContext(WeatherContext)
     const [sortedEvents, setSortedEvents] = useState([])
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
     const history = useHistory()
@@ -46,9 +48,19 @@ export const EventList = () => {
         setSortedEvents(eventsWithAuthors)
     }, [events, friends, users])
 
+    const handleMyWeatherButton = () => {
+        getWeather("Nashville", "TN")
+        setShowWeather(true)
+        // setWeatherEvent(event)
+
+    }
+
     return (
         <section className="events">
-            <button onClick={() => history.push(`/events/create`)} id="addEventButton" className="button btn--create">Add an Event</button>
+            <div className="events__buttons">
+                <button onClick={() => history.push(`/events/create`)} id="addEventButton" className="button btn--create">Add an Event</button>
+                <button className="event__weatherButton button" onClick={handleMyWeatherButton}>My Weather</button>
+            </div>
             {
                 sortedEvents.map(event => {
                     const upNext = sortedEvents.filter(event => {
@@ -57,7 +69,7 @@ export const EventList = () => {
                     })[0]
 
                     const isUpNext = event === upNext
-                    if (event.author) return <EventCard key={event.id} event={event} isUpNext={isUpNext}/>
+                    if (event.author) return <EventCard key={event.id} event={event} isUpNext={isUpNext} />
 
                 })
             }
