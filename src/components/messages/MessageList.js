@@ -22,11 +22,10 @@ export const MessageList = () => {
             .then(getMessages)
     }, [])
 
-    // expected useEffect to run the timer after inital render, then to run
-    // return  function fro cleanup after leaving the page. 
+// this useEffect added by dan to demo liveChat
     useEffect(() => {
         const timer = setInterval(() => {getMessages()}, 5000)
-        return clearInterval(timer)
+        return () => {clearInterval(timer)}
     }, [])
 
     const handleChange = text => {
