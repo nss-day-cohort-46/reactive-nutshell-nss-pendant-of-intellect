@@ -1,0 +1,43 @@
+.currentUser, .friendArticle {
+    border: solid black thin;
+    margin: 5%;
+    padding: 1%;
+}
+
+.deleteArticle, .editArticle {
+
+ float: right;
+ transform: translateY(-100%)
+}
+
+.btn--readMore {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article__header {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.article__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 14px;
+}
+
+.article__synopsis, .article__userInfo {
+    font-weight: bold;
+}
+
+.currentUser {
+    background-color: whitesmoke;
+}
+
+.friendArticle {
+    font-style: italic;
+    background-color: cornsilk;
+}

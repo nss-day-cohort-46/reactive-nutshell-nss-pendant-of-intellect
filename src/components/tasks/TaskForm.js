@@ -10,7 +10,6 @@ import "./Tasks.css"
 
 export const TaskForm = () => {
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
-    // console.log("userid", currentUserId)
     const {tasks, getTasks, addTask, modifyTask, getTaskById} = useContext(TaskContext)
 
     const [task, setTask] = useState({
@@ -69,9 +68,9 @@ export const TaskForm = () => {
 
     return (
         <>
-            <h2>{taskId ? "Update Task" : "New Task"}</h2>
             {/* <div>{task.name}</div> */}
-            <form>
+            <form className="task_form">
+                <h3 className="taskHeader">{taskId ? "Update Task" : "New Task"}</h3>
                 <fieldset className="task__name">
                 <div className="form__task">
                     <label htmlFor="taskName">Task: </label>
@@ -85,13 +84,13 @@ export const TaskForm = () => {
                     <input type="date" id="completedByDate" required className="taskForm" value={task.completedByDate} onChange={changeHandle}></input>
                 </div>
             </fieldset>
-            <button className="btn-saveTask"
+            <button className="taskbtn btn-saveTask"
                 disabled={isLoading}
                 onClick={event => { event.preventDefault() 
                     saveTask()}}>
-                {taskId ? "Update Task" : "New Task"}
+                {taskId ? "Update Task" : "Save New Task"}
             </button>
-            <button className="closeNewTask" onClick={() => history.push("/tasks")}>x</button>
+            <button className="taskbtn btn-closeNewTask" onClick={() => history.push("/tasks")}>Tasks</button>
             </form>
         </>
     )
