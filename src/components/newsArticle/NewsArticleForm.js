@@ -10,7 +10,6 @@ export const NewsArticleForm = () => {
     const history = useHistory()
 
     const {articleId} = useParams("articleId")
-    console.log('articleId: ', articleId);
 
     const [article, setArticle] = useState({
         "title": "",
@@ -69,7 +68,6 @@ export const NewsArticleForm = () => {
             <h1>{articleId ? "Edit Article" : "New Article"}</h1>
             <fieldset>
             <label htmlFor="article--title">Article Title</label>
-            {console.log(article)}
             <input type="text" name="article--title" id="title" value={article.title} onChange={event => handleChangeInput(event)}></input>
             </fieldset>
 

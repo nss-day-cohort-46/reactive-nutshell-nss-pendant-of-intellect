@@ -18,7 +18,6 @@ export const NewsArticleProvider = (props) => {
         // debugger
         return fetch(`http://localhost:8088/articles/${articleId}`)
         .then(res => res.json())
-        // .then(res => console.log("got the article by id", res))
     }
 
     const addNewsArticle = (articleObj) => {

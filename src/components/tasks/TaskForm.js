@@ -10,7 +10,6 @@ import "./Tasks.css"
 
 export const TaskForm = () => {
     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
-    // console.log("userid", currentUserId)
     const {tasks, getTasks, addTask, modifyTask, getTaskById} = useContext(TaskContext)
 
     const [task, setTask] = useState({
