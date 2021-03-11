@@ -18,6 +18,7 @@ export const WeatherModal = () => {
         if (weather.length) {
             // find a relevant forecast for the date of the event
             let weatherObj
+            // Dan says: top if statement checks for current user weather request - 
             if (weatherEvent.currentWeather) {
                 weatherObj = weather[0]
             } else {
