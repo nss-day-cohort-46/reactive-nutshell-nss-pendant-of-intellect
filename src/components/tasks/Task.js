@@ -6,6 +6,7 @@ Purpose of Module: jsx for task rendering,checking task as complete, and deletin
 import { React, useState, useContext } from "react";
 import { useHistory } from "react-router";
 import { TaskContext } from "./TaskProvider";
+import "./Tasks.css"
 
 export const TaskCard = ({taskObj}) => {
     const {updateTasks, removeTask} = useContext(TaskContext)
@@ -41,16 +42,18 @@ export const TaskCard = ({taskObj}) => {
     
         return(
             <>
-                <div>Complete by: {taskObj.completedByDate}</div>
+                <div className="taskCard">
+                <div className="task__dateComplete">Complete by: {taskObj.completedByDate}</div>
                 <section>
                     <input type= "checkbox" id="complete" onClick={handleChange}></input>
                     <label forhtml={taskObj.id} className="task__name">
                     <div>{taskObj.name}</div>
                     </label>
-                <button className="btn-removeTask" onClick={removeTaskClicked}>x</button>
+                <button className="btn-removeTask" onClick={removeTaskClicked}>Delete</button>
                 <button className="btn-editTask" onClick={() => {
                     history.push(`/tasks/edit/${taskObj.id}`)}}>Edit</button>
                 </section>
+                </div>
             </>
 
         )
